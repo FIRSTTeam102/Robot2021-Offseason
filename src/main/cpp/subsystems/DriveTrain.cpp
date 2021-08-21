@@ -60,7 +60,7 @@ void DriveTrain::arcadeDrive(){
 	}
 
 	double speed = speedPercent * mpDriverJoystick->GetRawAxis(1); // Cap: 690rpm
-	double rotation = rotation * mpDriverJoystick->GetRawAxis(4); // Cap: 697rpm
+	double rotation = rotationPercent * mpDriverJoystick->GetRawAxis(4); // Cap: 697rpm
 	if (!inverted) {
 		mDrive.ArcadeDrive(-speed, rotation, true);
 	}

@@ -5,50 +5,50 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-#include "commands/powercell/AimShooter.h"
+#include "commands/limelight/LMShootSpeed.h"
 
-AimShooter::AimShooter(Shooter *pShooter, float speed) : mpShooter{pShooter}, mSpeed{speed}
+LMShootSpeed::LMShootSpeed(Shooter *pShooter, LM *pLM) : mpShooter{pShooter}, mpLM{pLM}
 {
 	// Use addRequirements() here to declare subsystem dependencies.
 	AddRequirements(mpShooter);
 }
 
 // Called when the command is initially scheduled.
-void AimShooter::Initialize()
+void LMShootSpeed::Initialize()
 {
 	rampUpSpeed = 0;
-	if (mSpeed != kFastSpeed)
-	{
-		mpShooter->extServo();
-	}
-	else
+	printf("Aiming shooter\n");
+	if (mpLM->isClose())
 	{
 		mpShooter->retrServo();
 	}
-	printf("Aiming shooter\n");
+	else
+	{
+		mpShooter->extServo();
+	}
 }
 
 // Called repeatedly when this Command is scheduled to run
-void AimShooter::Execute()
+void LMShootSpeed::Execute()
 {
 	rampUpSpeed += 0.02;
-	mpShooter->setSpeed(rampUpSpeed * mSpeed);
+	mpShooter->setSpeed(rampUpSpeed * mpLM->getShootSpeed());
 	mpShooter->startMotor();
-	printf("RAMP UP PERCENT: %f\n", rampUpSpeed);
+	printf("RAMP UP PERCENT: %f\n", rampUpSpeed * mpLM->getShootSpeed());
 }
 
 // Called once the command ends or is interrupted.
-void AimShooter::End(bool interrupted)
+void LMShootSpeed::End(bool interrupted)
 {
 	if (interrupted)
 	{
-		mpShooter->setSpeed(mSpeed);
+		mpShooter->setSpeed(mpLM->getShootSpeed());
 		mpShooter->startMotor();
 	}
 }
 
 // Returns true when the command should end.
-bool AimShooter::IsFinished()
+bool LMShootSpeed::IsFinished()
 {
 	return (rampUpSpeed >= 1);
 }

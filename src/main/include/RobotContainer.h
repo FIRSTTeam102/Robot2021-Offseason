@@ -46,6 +46,7 @@
 #include "commands/PreviousCamera.h"
 #include "commands/NextCamera.h"
 #include "commands/ToggleLift.h"
+#include "commands/limelight/AimLM.h"
 
 /**
  * This class is where the bulk of the robot should be declared.  Since
@@ -128,6 +129,9 @@ private:
 	PositionControlPanel mPositionCommand{&mControlPanel, &mTankDrive};
 	StopControlPanel mStopPanelCommand{&mControlPanel, &mTankDrive};
 	ManualControlPanel mManualPanelCommand{&mControlPanel};
+
+	LM mLM;
+	AimLM mAimLM{&mLM, &mShooter, &mTankDrive};
 
 	Climber mClimber{&mOperatorController};
 	Climb mClimbCommand{&mClimber};

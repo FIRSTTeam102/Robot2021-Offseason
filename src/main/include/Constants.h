@@ -32,6 +32,9 @@ int constexpr kControlPanelMotor = 4;
 //Shooter Motor Controllers (TalonSRX)
 int constexpr kFlyMotor1 = 5;
 int constexpr kFlyMotor2 = 6;
+int constexpr kHoodServo = 2;
+double constexpr kOutHood = 0.5;
+double constexpr kInHood = 0.2;
 
 //Climb Motor Controllers (TalonSRX)
 // up raises the climb system, down retracts it & lifts the robot
@@ -77,9 +80,9 @@ int constexpr kOperatorJoystick = 1;
 float constexpr kAutoMoveTicks = 3 * 50; //3 sec * 50 ticks/sec
 
 //Shooter Speeds
-float constexpr kSlowSpeed = 0.2;
-float constexpr kMedSpeed = 0.58;
-float constexpr kFastSpeed = 0.63;
+float constexpr kSlowSpeed = 0.4;
+float constexpr kMedSpeed = 0.5;
+float constexpr kFastSpeed = 0.8;
 
 //Indexer Constants
 int constexpr kMaxPowerCellTravelTime = 100;

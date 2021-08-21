@@ -9,8 +9,8 @@
 
 #include <frc2/command/CommandBase.h>
 #include <frc2/command/CommandHelper.h>
-#include "subsystems/Shooter.h"
-#include "Constants.h"
+#include "subsystems/LM.h"
+#include "subsystems/DriveTrain.h"
 
 /**
  * An example command.
@@ -19,20 +19,20 @@
  * directly; this is crucially important, or else the decorator functions in
  * Command will *not* work!
  */
-class AimShooter
-    : public frc2::CommandHelper<frc2::CommandBase, AimShooter> {
- public:
-  AimShooter(Shooter* pShooter, float speed);
+class LMYawToTarget : public frc2::CommandHelper<frc2::CommandBase, LMYawToTarget>
+{
+public:
+	LMYawToTarget(LM *pLM, DriveTrain *pDriveTrain);
 
-  void Initialize() override;
+	void Initialize() override;
 
-  void Execute() override;
+	void Execute() override;
 
-  void End(bool interrupted) override;
+	void End(bool interrupted) override;
 
-  bool IsFinished() override;
-  private:
-  Shooter* mpShooter;
-  float mSpeed;
-  float rampUpSpeed;
+	bool IsFinished() override;
+
+private:
+	LM *mpLM;
+	DriveTrain *mpDriveTrain;
 };

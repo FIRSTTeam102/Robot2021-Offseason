@@ -10,35 +10,49 @@
 #include "Constants.h"
 
 Shooter::Shooter() : 
-    mShooter1{kFlyMotor1},
-    mShooter2{kFlyMotor2}
+	mShooter1{kFlyMotor1},
+	mShooter2{kFlyMotor2},
+	mServo{kHoodServo}
 {
-    mShooter2.Set(ControlMode::Follower, kFlyMotor1);
-    mShooter1.SetInverted(true);
-    mShooter2.SetInverted(true);
+	mShooter2.Set(ControlMode::Follower, kFlyMotor1);
+	mShooter1.SetInverted(true);
+	mShooter2.SetInverted(true);
 
-    frc::Shuffleboard::GetTab("Drive Info")
-    .Add("Fly Wheel Speed","Stopped")
-    .WithPosition (2,1);
+	frc::Shuffleboard::GetTab("Drive Info")
+	.Add("Fly Wheel Speed","Stopped")
+	.WithPosition (2,1);
 }
 
 // This method will be called once per scheduler run
-void Shooter::Periodic() {}
+void Shooter::Periodic() {
+	// printf("Shooter should be: %d\n", mHoodIn);
+}
 
 void Shooter::setSpeed(float speed) {
-    mSpeed = speed;
+	mSpeed = speed;
 }
 
 void Shooter::startMotor() {
-    mShooter1.Set(mSpeed);
-    mIsStarted = true;
+	mShooter1.Set(mSpeed);
+	mIsStarted = true;
 }
 
 void Shooter::stopMotor() {
-    mShooter1.Set(0);
-    mIsStarted = false;
+	mShooter1.Set(0);
+	mIsStarted = false;
 }
 
 bool Shooter::isRunning() {
-    return mIsStarted;
+	return mIsStarted;
+}
+
+void Shooter::toggleServo() {
+	if (mHoodIn) {
+		extServo();
+		mHoodIn = false;
+	}
+	else {
+		retrServo();
+		mHoodIn = true;
+	}
 }
