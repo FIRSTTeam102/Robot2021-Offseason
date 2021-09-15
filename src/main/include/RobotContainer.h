@@ -22,7 +22,7 @@
 #include "subsystems/Shooter.h"
 #include "subsystems/ControlPanelManipulator.h"
 #include "subsystems/Lights.h"
-#include "subsystems/Pneumatics.h"
+// #include "subsystems/Pneumatics.h"
 
 #include "commands/drive/DriveWithXbox.h"
 #include "commands/drive/SlowTurn.h"
@@ -45,7 +45,7 @@
 #include "commands/NextCamera.h"
 #include "commands/PreviousCamera.h"
 #include "commands/NextCamera.h"
-#include "commands/ToggleLift.h"
+// #include "commands/ToggleLift.h"
 #include "commands/limelight/AimLM.h"
 
 /**
@@ -142,8 +142,8 @@ private:
 	NextCamera mNextCamCommand{&mCamera1, &mCamera2};
 	PreviousCamera mPrevCamCommand{&mCamera1, &mCamera2};
 
-	Pneumatics mPneumatics;
-	ToggleLift mToggleLift{&mPneumatics};
+	// Pneumatics mPneumatics;
+	// ToggleLift mToggleLift{&mPneumatics};
 
 	void ConfigureButtonBindings();
 };
