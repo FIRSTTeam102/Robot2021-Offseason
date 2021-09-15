@@ -7,6 +7,7 @@
 
 #include "commands/PreviousCamera.h"
 
+// See also: NextCamera.cpp
 PreviousCamera::PreviousCamera(cs::UsbCamera *Camera1, cs::UsbCamera *Camera2/*, cs::UsbCamera *Camera3*/) 
      : mCamera1{Camera1},
        mCamera2{Camera2},

@@ -16,14 +16,15 @@ RobotContainer::RobotContainer()
 	//drive
 	// Configure the button bindings
 	ConfigureButtonBindings();
-
+	// tank drive controller init
 	mTankDrive.SetDefaultCommand(std::move(mDriveCommand));
 	mTankDrive.setDriverJoystick(&mDriverController);
-
+	// cameras 0 & 1 init
 	mCamera1 = frc::CameraServer::GetInstance()->StartAutomaticCapture(0);
 	mCamera2 = frc::CameraServer::GetInstance()->StartAutomaticCapture(1);
+	// get video stream from camera 1
 	frc::CameraServer::GetInstance()->GetServer().SetSource(mCamera1);
-
+	// Shuffleboard info/controls
 	frc::Shuffleboard::GetTab("Drive Info")
 			.Add("Camera Stream", mCamera1)
 			.WithWidget(frc::BuiltInWidgets::kCameraStream)
@@ -33,7 +34,7 @@ RobotContainer::RobotContainer()
 	mClimber.SetDefaultCommand(std::move(mClimbCommand));
 
 	mIndexer.SetDefaultCommand(std::move(mIndexCommand));
-
+	// camera servo controller
 	mCameraServo.SetDefaultCommand(std::move(mServoCommand));
 	mCameraServo.setServoJoystick(&mOperatorController);
 }
@@ -65,6 +66,7 @@ void RobotContainer::ConfigureButtonBindings()
 	mOperatorLT.WhenHeld(&mAimLM, true);
 	// must be added- mOperatorButtonLMenu(toggle danger buttons)
 
+	// See also: NextCamera.cpp, PreviousCamera.cpp
 	// mOperatorButtonLMenu.WhenPressed(&mPrevCamCommand, true);
 	mOperatorButtonRMenu.WhenPressed(&mNextCamCommand, true);
 }
