@@ -25,6 +25,8 @@ RobotContainer::RobotContainer()
 	// get video stream from camera 1
 	frc::CameraServer::GetInstance()->GetServer().SetSource(mCamera1);
 	// Shuffleboard info/controls
+	// change size to .WithSize(4,4)
+	// 	and edit tile size to be >= 256-ish in "File" -> "Default Tile Size"
 	frc::Shuffleboard::GetTab("Drive Info")
 			.Add("Camera Stream", mCamera1)
 			.WithWidget(frc::BuiltInWidgets::kCameraStream)
