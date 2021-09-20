@@ -48,7 +48,7 @@ int constexpr kIntakeRollerMotor = 1;
 
 //Index Relay (SpikeRelay)
 int constexpr kIndexChannel = 2;
-
+double constexpr kIndexSpeed = 0.5;
 
 //PWM Signals
 int constexpr kCameraServoXIndex = 1;

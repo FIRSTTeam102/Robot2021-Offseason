@@ -9,7 +9,7 @@
 
 IndexPowerCell::IndexPowerCell(Indexer* pIndexer): mpIndexer{pIndexer} {
   // Use addRequirements() here to declare subsystem dependencies.
-  AddRequirements(pIndexer);
+  //AddRequirements(Indexer* pIndexer);
 }
 
 // Called when the command is initially scheduled.

@@ -9,6 +9,7 @@
 
 #include <frc2/command/SubsystemBase.h>
 #include <frc/Relay.h>
+#include <ctre/Phoenix.h>
 #include <frc/DigitalInput.h>
 #include <frc/Timer.h>
 #include "Constants.h"
@@ -35,14 +36,19 @@ class Indexer : public frc2::SubsystemBase {
     bool isPowerCellAtTop(){return mTopSensor.Get();}
     bool isPowerCellAtIntake(){return !mIntakeSensor.Get();}
     bool rawPowerCellAtBottom(){return mBottomSensor.Get();}
-    void stopIndexer(){mIndexerConveyer.Set(frc::Relay::kOff);}
-    void moveUpIndexer() {mIndexerConveyer.Set(frc::Relay::Value::kForward);}
-    void moveDownIndexer() {mIndexerConveyer.Set(frc::Relay::kReverse);}
+    void stopIndexer(){mIndexerConveyer.Set(0);}
+    void moveUpIndexer() {mIndexerConveyer.Set(kIndexSpeed);}
+    void moveDownIndexer() {mIndexerConveyer.Set(kIndexSpeed);}
+    /*void stopIndexer(){mIndexerConveyer.Set(0);}
+    void moveUpIndexer() {mIndexerConveyer.Set(0.5);}
+    void moveDownIndexer() {mIndexerConveyer.Set(-0.5);}
+    */
     void resetRunningOnEmpty() {mEmptyTimer = 0;}
     bool isRunningOnEmpty() {return (mEmptyTimer>=kMaxPowerCellTravelTime);}
     void enable() {enabled = true;}
     void disable() {enabled = false;}
     bool isEnabled() {return enabled;}
+    void addPowerCell() {mNumPowerCells++;}
   /**
    * Will be called periodically whenever the CommandScheduler runs.
    */
@@ -51,7 +57,7 @@ class Indexer : public frc2::SubsystemBase {
  private:
   // Components (e.g. motor controllers and sensors) should generally be
   // declared private and exposed only through public methods.
-  frc::Relay mIndexerConveyer;
+  WPI_TalonSRX mIndexerConveyer;
   frc::DigitalInput mIntakeSensor;
   frc::DigitalInput mBottomSensor;
   frc::DigitalInput mTopSensor;
