@@ -25,12 +25,6 @@ Intake::Intake():
 void Intake::lowerIntakeArm() {
     printf("Deploying intake\n");
     printf("Is arm down - %d\n", isArmDown());
-    if (!isArmDown()){
-      mIntakeArmMotor.Set(frc::Relay::kReverse);
-    }
-    else {
-      stopIntakeArm();
-    }
 }
 //raise the intake arm - if the arm is not already
 //  in the fully upright position, start the arm motor in reverse
@@ -38,12 +32,6 @@ void Intake::lowerIntakeArm() {
 //  is not running.
 void Intake::raiseIntakeArm() {
     printf("Retracting intake\n");
-    if (!isArmUp()){
-      mIntakeArmMotor.Set(frc::Relay::kForward);
-    }
-    else {
-        stopIntakeArm();
-    }
 }
 //stopIntakeArm - stop the intake arm motor by shutting it off
 void Intake::stopIntakeArm(){
