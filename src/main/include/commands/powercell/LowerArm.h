@@ -34,4 +34,5 @@ class LowerArm
   private:
   Intake* mpIntake;
   Indexer* mpIndexer;
+  int counter;
 };

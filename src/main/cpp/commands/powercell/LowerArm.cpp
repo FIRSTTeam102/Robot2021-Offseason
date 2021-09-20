@@ -23,6 +23,7 @@ LowerArm::LowerArm(Intake* pIntake, Indexer* pIndexer): mpIntake{pIntake}, mpInd
 void LowerArm::Initialize() {
    mpIntake->startRollers();
    mpIndexer->enable();
+   counter = 0;
 }
 
 // LowerArm - Execute - Called repeatedly when this Command is scheduled to run
@@ -31,6 +32,7 @@ void LowerArm::Initialize() {
 //    running to take in power cells.
 void LowerArm::Execute() {
    mpIntake->lowerIntakeArm();
+   counter++;
 }
 
 // Called once the command ends or is interrupted/cancelled.
@@ -43,5 +45,5 @@ void LowerArm::End(bool interrupted) {
 //   when the button is released, the command will be cancelled, this
 //   command is not expected to finish on it's own.
 bool LowerArm::IsFinished() {
-   return mpIntake->isArmDown();
+   return counter >= 25;
 }
