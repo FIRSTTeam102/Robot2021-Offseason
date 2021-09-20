@@ -34,4 +34,5 @@ class RaiseArm
  private:
   Intake* mpIntake;
   Indexer* mpIndexer;
+  int counter;
 };
