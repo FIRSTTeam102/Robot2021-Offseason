@@ -9,7 +9,7 @@
 
 #include <frc2/command/SubsystemBase.h>
 #include <frc/XboxController.h>
-#include <ctre/Phoenix.h>
+#include <frc/PWMVictorSPX.h>
 #include <frc/DigitalInput.h>
 
 class Climber : public frc2::SubsystemBase {
@@ -26,8 +26,9 @@ class Climber : public frc2::SubsystemBase {
   void Periodic();
   
 //magnetic limit switches are reversed, isClimbUp means !isClimbUp
-  bool isClimbUp() { return(!mTopLimitSwitch.Get()); }
-  bool isClimbDown() { return(!mBotLimitSwitch.Get()); }
+  bool isClimbUp() { return(!mTopSensor.Get()); }
+  bool isClimbMid() { return(!mMidSensor.Get()); }
+  bool isClimbDown() { return(!mBotSensor.Get()); }
 
   double ClimbSpeed() {
     double speed = (0 - mpOperatorJoystick->GetRawAxis(1)) / 2;
@@ -41,10 +42,10 @@ class Climber : public frc2::SubsystemBase {
  private:
  // Components (e.g. motor controllers and sensors) should generally be
   // declared private and exposed only through public methods.
-  WPI_TalonSRX mClimbUpMotor;
-  WPI_TalonSRX mClimbDownMotor;
-  frc::DigitalInput mTopLimitSwitch;
-  frc::DigitalInput mBotLimitSwitch;
+  frc::PWMVictorSPX mClimbMotor;
+  frc::DigitalInput mTopSensor;
+  frc::DigitalInput mMidSensor;
+  frc::DigitalInput mBotSensor;
   frc::XboxController* mpOperatorJoystick;
   
 };

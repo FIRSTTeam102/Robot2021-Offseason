@@ -14,9 +14,9 @@
 
 Intake::Intake():
     mIntakeArmMotor{kIntakeMotor,frc::Relay::kBothDirections},
-    mIntakeRollerMotor{kIntakeRollerMotor, frc::Relay::kBothDirections},
-    mUpSensor{kIntakeTopSensor},
-    mDownSensor{kIntakeBottomSensor}
+    mIntakeRollerMotor{kIntakeRollerMotor, frc::Relay::kBothDirections}
+    // mUpSensor{kIntakeTopSensor},
+    // mDownSensor{kIntakeBottomSensor}
  {
 }
 //lower the intake arm - if the arm is not
@@ -24,7 +24,7 @@ Intake::Intake():
 //   if the arm is already down, make sure the arm motor is not running
 void Intake::lowerIntakeArm() {
     printf("Deploying intake\n");
-    printf("Is arm down - %d\n", isArmDown());
+    // printf("Is arm down - %d\n", isArmDown());
 }
 //raise the intake arm - if the arm is not already
 //  in the fully upright position, start the arm motor in reverse

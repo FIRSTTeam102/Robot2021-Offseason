@@ -5,27 +5,37 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-#include "commands/powercell/UnPrimeIndexer.h"
+#include "commands/powercell/IndexSingleCell.h"
 
-UnPrimeIndexer::UnPrimeIndexer(Indexer* pIndexer): mpIndexer{pIndexer} {
-  // Use addRequirements() here to declare subsystem dependencies.
-  AddRequirements(pIndexer);
+IndexSingleCell::IndexSingleCell(Indexer* pIndexer) : mpIndexer{pIndexer} {
+	// Use addRequirements() here to declare subsystem dependencies.
+	AddRequirements(pIndexer);
 }
 
 // Called when the command is initially scheduled.
-void UnPrimeIndexer::Initialize() {}
+void IndexSingleCell::Initialize() {
+	timer = 0;
+	mpIndexer->moveUpIndexer();
+}
 
 // Called repeatedly when this Command is scheduled to run
-void UnPrimeIndexer::Execute() {
-  mpIndexer->movePowerCellsToBottom();
+void IndexSingleCell::Execute() {
+	if (mpIndexer->isPowerCellAtTop()) {
+		printf("Cell is already at top of indexer, aborting!\n");
+		End(false);
+		return;
+	}
+	timer++;
+	printf("Indexing single cell\n");
 }
 
 // Called once the command ends or is interrupted.
-void UnPrimeIndexer::End(bool interrupted) {
-  mpIndexer->stopIndexer();
+void IndexSingleCell::End(bool interrupted) {
+	mpIndexer->stopIndexer();
+	mpIndexer->addPowerCell();
 }
 
 // Returns true when the command should end.
-bool UnPrimeIndexer::IsFinished() {
-  return (mpIndexer->isPowerCellAtBottom() || mpIndexer->isEmptyIndexer());
+bool IndexSingleCell::IsFinished() { 
+	return (timer * 20.0 >= 500);
 }

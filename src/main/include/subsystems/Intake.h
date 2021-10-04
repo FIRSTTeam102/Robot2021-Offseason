@@ -24,8 +24,8 @@ class Intake : public frc2::SubsystemBase {
   void startRollers();
   void startReverseRollers();
   void stopRollers();
-  bool isArmUp() { return !mUpSensor.Get(); }
-  bool isArmDown() { return !mDownSensor.Get(); }
+  // bool isArmUp() { return !mUpSensor.Get(); }
+  // bool isArmDown() { return !mDownSensor.Get(); }
 
   /**
    * Will be called periodically whenever the CommandScheduler runs.
@@ -35,6 +35,6 @@ class Intake : public frc2::SubsystemBase {
  private:
   frc::Relay mIntakeArmMotor;
   frc::Relay mIntakeRollerMotor;
-  frc::DigitalInput mUpSensor;
-  frc::DigitalInput mDownSensor;
+  // frc::DigitalInput mUpSensor;
+  // frc::DigitalInput mDownSensor;
 };

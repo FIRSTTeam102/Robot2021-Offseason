@@ -12,9 +12,9 @@
 #include <frc/smartdashboard/SmartDashboard.h>
 
 Indexer::Indexer():
-    mIndexerConveyer{kIndexChannel,frc::Relay::kBothDirections},
+    mIndexerConveyer{kIndexChannel},
     mIntakeSensor{kDIOIntake},
-    mBottomSensor{kDIOBottom},
+    // mBottomSensor{kDIOBottom},
     mTopSensor{kDIOTop},
     mNumPowerCells{3},
     mEmptyTimer{0},
@@ -27,9 +27,9 @@ Indexer::Indexer():
     .Add("Intake Sensor",mIntakeSensor.Get())
     .WithWidget(frc::BuiltInWidgets::kBooleanBox).WithSize(3, 1).WithPosition(2, 1);
 
-    frc::Shuffleboard::GetTab("TestRobot")
-    .Add("Intake Bottom Sensor",mBottomSensor.Get())
-    .WithWidget(frc::BuiltInWidgets::kBooleanBox).WithSize(3, 1).WithPosition(2, 2);
+    // frc::Shuffleboard::GetTab("TestRobot")
+    // .Add("Intake Bottom Sensor",mBottomSensor.Get())
+    // .WithWidget(frc::BuiltInWidgets::kBooleanBox).WithSize(3, 1).WithPosition(2, 2);
 
     frc::Shuffleboard::GetTab("TestRobot")
     .Add("Intake Top Sensor",mTopSensor.Get())
@@ -112,7 +112,6 @@ void Indexer::shootPowerCells(){
 //Check if ball has been at bottom sensor for long enough
 bool Indexer::isPowerCellAtBottom(){
     if (mIndexTimer.Get() > kBottomIndexerTimeout) {
-        printf("Jesus christ stop\n");
         mPowerCellWasAtBottom = false;
         //mBottomTimer = 0;
         mIndexTimer.Stop();
@@ -125,12 +124,12 @@ bool Indexer::isPowerCellAtBottom(){
 
 // This method will be called once per scheduler run
 void Indexer::Periodic() {
-    if (rawPowerCellAtBottom()) {
+    /*if (rawPowerCellAtBottom()) {
         mPowerCellWasAtBottom = true;
         mIndexTimer.Reset();
         printf("RESETTING TIMER\n");
         mIndexTimer.Start();
-    }
+    }*/
     /*if (mPowerCellWasAtBottom && mIndexTimer.Get() < 2) { //Max 2 seconds
         mBottomTimer += 1;
     }
@@ -138,9 +137,9 @@ void Indexer::Periodic() {
         mPowerCellWasAtBottom = false;
         mBottomTimer = 0;
     }*/
-    printf("Intake: %d          Bottom flipped: %d             Top flipped: %d\n", mIntakeSensor.Get(), mBottomSensor.Get(), mTopSensor.Get());
+    //printf("Intake: %d          Bottom flipped: %d             Top flipped: %d\n", mIntakeSensor.Get(), mBottomSensor.Get(), mTopSensor.Get());
     //printf("Timer: %f\n", mIndexTimer.Get());
     frc::SmartDashboard::PutBoolean("Intake Sensor", mIntakeSensor.Get());
     frc::SmartDashboard::PutBoolean("Index Top Sensor", mTopSensor.Get());
-    frc::SmartDashboard::PutBoolean("Index Bot Sensor", mBottomSensor.Get());
+    // frc::SmartDashboard::PutBoolean("Index Bot Sensor", mBottomSensor.Get());
 }

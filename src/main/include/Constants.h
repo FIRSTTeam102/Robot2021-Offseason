@@ -38,17 +38,16 @@ double constexpr kInHood = 0.2;
 
 //Climb Motor Controllers (TalonSRX)
 // up raises the climb system, down retracts it & lifts the robot
-int constexpr kClimbUpMotor = 7;
-int constexpr kClimbDwnMotor = 8;
+int constexpr kClimbMotor = 2;
 double constexpr kTakeUpSlackPercent = 0.3;
 
 //Intake Arm & Roller Motor Controllers (SpikeRelay)
 int constexpr kIntakeMotor = 0;
 int constexpr kIntakeRollerMotor = 1;
 
-//Index Relay (SpikeRelay)
-int constexpr kIndexChannel = 2;
-
+//Index motor
+int constexpr kIndexChannel = 3;
+double constexpr kIndexSpeed = 0.5;
 
 //PWM Signals
 int constexpr kCameraServoXIndex = 1;
@@ -57,17 +56,18 @@ int constexpr kCameraServoYIndex = 0;
 
 //Digital IO channels
 //Indexer Distance Sensors (Digital Input)
-int constexpr kDIOIntake = 0;
-int constexpr kDIOBottom = 1;
-int constexpr kDIOTop = 2;
+int constexpr kDIOIntake = 1;
+// int constexpr kDIOBottom = 1;
+int constexpr kDIOTop = 0;
 
 //Intake Limit Switches
-int constexpr kIntakeTopSensor = 3;
-int constexpr kIntakeBottomSensor = 4;
+// int constexpr kIntakeTopSensor = 3;
+// int constexpr kIntakeBottomSensor = 4;
 
-//Climb Limit Switches
-int constexpr kTopClimbLimit = 5;
-int constexpr kBotClimbLimit = 6;
+// Climber magnetic senors
+int constexpr kClimberTopSensor = 4;
+int constexpr kClimberMidSensor = 3;
+int constexpr kClimberBotSensor = 2;
 
 
 //OI Indexes (joysticks/buttons)

@@ -35,7 +35,8 @@ RobotContainer::RobotContainer()
 
 	mClimber.SetDefaultCommand(std::move(mClimbCommand));
 
-	mIndexer.SetDefaultCommand(std::move(mIndexCommand));
+	// mIndexer.SetDefaultCommand(std::move(mIndexCommand));
+
 	// camera servo controller
 	mCameraServo.SetDefaultCommand(std::move(mServoCommand));
 	mCameraServo.setServoJoystick(&mOperatorController);
@@ -46,7 +47,8 @@ void RobotContainer::ConfigureButtonBindings()
 	// Configure your button bindings here
 	mDriverButtonA.WhenPressed(&mFlipDriveCommand, true); // (&mPrepShootingFast, true);
 	mDriverButtonB.WhenHeld(&mPositionCommand, true);			// (&mPrepShootingMed, true);
-	mDriverButtonX.WhenHeld(&mRotateCommand, true);				// (&mStopShootingCommand, false);
+	// mDriverButtonX.WhenHeld(&mRotateCommand, true);				// (&mStopShootingCommand, false);
+	mDriverButtonX.WhenPressed(&mIndexOnceCommand, true);
 	// mDriverButtonY.WhenHeld(&mManualPanelCommand, false); // (&mPrepShootingSlow, true);
 	// mDriverButtonY.WhenPressed(&mToggleLift, true);
 	// mDriverButtonLB.WhenHeld(&mSlowLeftCommand, true);
