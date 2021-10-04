@@ -10,38 +10,30 @@
 #include "Constants.h"
 
 Climber::Climber(frc::XboxController* pOperatorJoystick):  
-    mClimbUpMotor{kClimbUpMotor},
-    mClimbDownMotor{kClimbDwnMotor},
-    mTopLimitSwitch{kTopClimbLimit},
-    mBotLimitSwitch{kBotClimbLimit},
+    mClimbMotor{kClimbMotor},
+    mTopSensor{kClimberTopSensor},
+    mMidSensor{kClimberMidSensor},
+    mBotSensor{kClimberBotSensor},
     mpOperatorJoystick{pOperatorJoystick}
 {
-    mClimbUpMotor.SetInverted(true);
-    mClimbDownMotor.SetInverted(true);
-    mClimbUpMotor.SetNeutralMode(ctre::phoenix::motorcontrol::NeutralMode::Brake);
-    mClimbDownMotor.SetNeutralMode(ctre::phoenix::motorcontrol::NeutralMode::Brake);
+    mClimbMotor.SetInverted(true);
 }
 //stop all climber motors
 void Climber::StopClimb(){
-    mClimbUpMotor.Set(0);
-    mClimbDownMotor.Set(0);
-
+    mClimbMotor.Set(0);
 }
 
 //raise the climber
 void Climber::Climb(){
-    
-    if(ClimbSpeed()>0/* && !isClimbUp()*/){
-        mClimbUpMotor.Set(ClimbSpeed());
-        mClimbDownMotor.Set(0);
+    if (ClimbSpeed() > 0 && !isClimbUp()) {
+        mClimbMotor.Set(ClimbSpeed());
         //mClimbUpMotor.Set(-ClimbSpeed());
         //mClimbDownMotor.Set(ClimbSpeed()); //For unraveling winch
     }
-    else if(ClimbSpeed()<0/* && !isClimbDown()*/){
-        mClimbDownMotor.Set(ClimbSpeed());
-        mClimbUpMotor.Set(ClimbSpeed()*kTakeUpSlackPercent);
+    else if (ClimbSpeed() < 0 && !isClimbDown()) {
+        mClimbMotor.Set(ClimbSpeed() * kTakeUpSlackPercent);
     }
-    else{
+    else {
         StopClimb();
     }
 }

@@ -27,5 +27,5 @@ void UnPrimeIndexer::End(bool interrupted) {
 
 // Returns true when the command should end.
 bool UnPrimeIndexer::IsFinished() {
-  return (mpIndexer->rawPowerCellAtBottom() || mpIndexer->isEmptyIndexer());
+  return (mpIndexer->isPowerCellAtBottom() || mpIndexer->isEmptyIndexer());
 }

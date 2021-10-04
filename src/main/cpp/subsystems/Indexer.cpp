@@ -14,7 +14,7 @@
 Indexer::Indexer():
     mIndexerConveyer{kIndexChannel},
     mIntakeSensor{kDIOIntake},
-    mBottomSensor{kDIOBottom},
+    // mBottomSensor{kDIOBottom},
     mTopSensor{kDIOTop},
     mNumPowerCells{3},
     mEmptyTimer{0},
@@ -27,9 +27,9 @@ Indexer::Indexer():
     .Add("Intake Sensor",mIntakeSensor.Get())
     .WithWidget(frc::BuiltInWidgets::kBooleanBox).WithSize(3, 1).WithPosition(2, 1);
 
-    frc::Shuffleboard::GetTab("TestRobot")
-    .Add("Intake Bottom Sensor",mBottomSensor.Get())
-    .WithWidget(frc::BuiltInWidgets::kBooleanBox).WithSize(3, 1).WithPosition(2, 2);
+    // frc::Shuffleboard::GetTab("TestRobot")
+    // .Add("Intake Bottom Sensor",mBottomSensor.Get())
+    // .WithWidget(frc::BuiltInWidgets::kBooleanBox).WithSize(3, 1).WithPosition(2, 2);
 
     frc::Shuffleboard::GetTab("TestRobot")
     .Add("Intake Top Sensor",mTopSensor.Get())
@@ -141,5 +141,5 @@ void Indexer::Periodic() {
     //printf("Timer: %f\n", mIndexTimer.Get());
     frc::SmartDashboard::PutBoolean("Intake Sensor", mIntakeSensor.Get());
     frc::SmartDashboard::PutBoolean("Index Top Sensor", mTopSensor.Get());
-    frc::SmartDashboard::PutBoolean("Index Bot Sensor", mBottomSensor.Get());
+    // frc::SmartDashboard::PutBoolean("Index Bot Sensor", mBottomSensor.Get());
 }
