@@ -38,15 +38,17 @@ double constexpr kInHood = 0.2;
 
 //Climb Motor Controllers (TalonSRX)
 // up raises the climb system, down retracts it & lifts the robot
-int constexpr kClimbMotor = 2;
+int constexpr kClimbUpMotor = 2;
+int constexpr kClimbDownMotor = 2;
 double constexpr kTakeUpSlackPercent = 0.3;
 
 //Intake Arm & Roller Motor Controllers (SpikeRelay)
-int constexpr kIntakeMotor = 0;
-int constexpr kIntakeRollerMotor = 1;
+int constexpr kIntakeArmMotor = 0;
+int constexpr kIntakeRollerMotor = 7;
+double constexpr kIntakeRollerSpeed = 0.5;
 
 //Index motor
-int constexpr kIndexChannel = 3;
+int constexpr kIndexChannel = 13;
 double constexpr kIndexSpeed = 0.5;
 
 //PWM Signals

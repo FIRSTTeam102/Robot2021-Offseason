@@ -9,7 +9,7 @@
 
 #include <frc2/command/SubsystemBase.h>
 #include <frc/Relay.h>
-#include <frc/PWMVictorSPX.h>
+#include <ctre/Phoenix.h>
 #include <frc/DigitalInput.h>
 #include <frc/Timer.h>
 #include "Constants.h"
@@ -53,7 +53,7 @@ class Indexer : public frc2::SubsystemBase {
  private:
   // Components (e.g. motor controllers and sensors) should generally be
   // declared private and exposed only through public methods.
-  frc::PWMVictorSPX mIndexerConveyer;
+  WPI_TalonSRX mIndexerConveyer;
   frc::DigitalInput mIntakeSensor;
   // frc::DigitalInput mBottomSensor;
   frc::DigitalInput mTopSensor;

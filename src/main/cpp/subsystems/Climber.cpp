@@ -10,28 +10,33 @@
 #include "Constants.h"
 
 Climber::Climber(frc::XboxController* pOperatorJoystick):  
-    mClimbMotor{kClimbMotor},
+    mClimbUpMotor{kClimbUpMotor},
+    mClimbDownMotor{kClimbDownMotor},
     mTopSensor{kClimberTopSensor},
     mMidSensor{kClimberMidSensor},
     mBotSensor{kClimberBotSensor},
     mpOperatorJoystick{pOperatorJoystick}
 {
-    mClimbMotor.SetInverted(true);
+    mClimbUpMotor.SetInverted(true);
+    mClimbDownMotor.SetInverted(true);
 }
 //stop all climber motors
 void Climber::StopClimb(){
-    mClimbMotor.Set(0);
+    mClimbUpMotor.Set(0);
+    mClimbDownMotor.Set(0);
 }
 
 //raise the climber
 void Climber::Climb(){
     if (ClimbSpeed() > 0 && !isClimbUp()) {
-        mClimbMotor.Set(ClimbSpeed());
+        mClimbUpMotor.Set(ClimbSpeed());
+        mClimbDownMotor.Set(0);
         //mClimbUpMotor.Set(-ClimbSpeed());
         //mClimbDownMotor.Set(ClimbSpeed()); //For unraveling winch
     }
     else if (ClimbSpeed() < 0 && !isClimbDown()) {
-        mClimbMotor.Set(ClimbSpeed() * kTakeUpSlackPercent);
+        mClimbUpMotor.Set(ClimbSpeed() * kTakeUpSlackPercent);
+        mClimbDownMotor.Set(ClimbSpeed());
     }
     else {
         StopClimb();

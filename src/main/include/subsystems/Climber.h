@@ -31,7 +31,7 @@ class Climber : public frc2::SubsystemBase {
   bool isClimbDown() { return(!mBotSensor.Get()); }
 
   double ClimbSpeed() {
-    double speed = (0 - mpOperatorJoystick->GetRawAxis(1)) / 2;
+    double speed = (0 - mpOperatorJoystick->GetRawAxis(1)) / 2; // right joystick y-axis
     if (-0.01 < speed && speed < 0.01){
       speed = 0;
     }
@@ -42,7 +42,8 @@ class Climber : public frc2::SubsystemBase {
  private:
  // Components (e.g. motor controllers and sensors) should generally be
   // declared private and exposed only through public methods.
-  frc::PWMVictorSPX mClimbMotor;
+  frc::PWMVictorSPX mClimbUpMotor;
+  frc::PWMVictorSPX mClimbDownMotor;
   frc::DigitalInput mTopSensor;
   frc::DigitalInput mMidSensor;
   frc::DigitalInput mBotSensor;
