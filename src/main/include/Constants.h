@@ -21,17 +21,17 @@
 
 // Talon SRX motor controllers (CAN Bus)
 // Drive motor controllers
-int constexpr kTopLeftMotor = 0;
-int constexpr kTopRightMotor = 2;
-int constexpr kBottomLeftMotor = 1;
-int constexpr kBottomRightMotor = 3;
+int constexpr kTopLeftMotor = 1;
+int constexpr kTopRightMotor = 3;
+int constexpr kBottomLeftMotor = 2;
+int constexpr kBottomRightMotor = 4;
 
 // Control panel motor controller (TalonSRX)
-int constexpr kControlPanelMotor = 4;
+int constexpr kControlPanelMotor = 5;
 
 //Shooter Motor Controllers (TalonSRX)
-int constexpr kFlyMotor1 = 5;
-int constexpr kFlyMotor2 = 6;
+int constexpr kFlyMotor1 = 10;
+int constexpr kFlyMotor2 = 11;
 int constexpr kHoodServo = 2;
 double constexpr kOutHood = 0.5;
 double constexpr kInHood = 0.2;
