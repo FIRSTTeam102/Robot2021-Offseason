@@ -19,8 +19,8 @@
  * they are needed.
  */
 
-// Talon SRX motor controllers (CAN Bus)
-// Drive motor controllers
+
+// Drive motor controllers (TalonSRX)
 int constexpr kTopLeftMotor = 1;
 int constexpr kTopRightMotor = 3;
 int constexpr kBottomLeftMotor = 2;
@@ -29,40 +29,40 @@ int constexpr kBottomRightMotor = 4;
 // Control panel motor controller (TalonSRX)
 int constexpr kControlPanelMotor = 5;
 
-//Shooter Motor Controllers (TalonSRX)
+// Shooter Motor Controllers (TalonSRX)
 int constexpr kFlyMotor1 = 10;
 int constexpr kFlyMotor2 = 11;
 int constexpr kHoodServo = 2;
 double constexpr kOutHood = 0.5;
 double constexpr kInHood = 0.2;
 
-//Climb Motor Controllers (TalonSRX)
+// Climb Motor Controllers (PWMVictorSPX)
 // up raises the climb system, down retracts it & lifts the robot
 int constexpr kClimbUpMotor = 2;
-int constexpr kClimbDownMotor = 2;
+int constexpr kClimbDownMotor = 3;
 double constexpr kTakeUpSlackPercent = 0.3;
 
-//Intake Arm & Roller Motor Controllers (SpikeRelay)
+// Intake Arm & Roller Motor Controllers (SpikeRelay)
 int constexpr kIntakeArmMotor = 0;
-int constexpr kIntakeRollerMotor = 7;
+int constexpr kIntakeRollerMotor = 12;
 double constexpr kIntakeRollerSpeed = 0.5;
 
-//Index motor
+// Index motor
 int constexpr kIndexChannel = 13;
 double constexpr kIndexSpeed = 0.5;
 
-//PWM Signals
+// PWM Signals
 int constexpr kCameraServoXIndex = 1;
 int constexpr kCameraServoYIndex = 0;
 
 
-//Digital IO channels
-//Indexer Distance Sensors (Digital Input)
+// Digital IO channels
+// Indexer Distance Sensors (Digital Input)
 int constexpr kDIOIntake = 1;
 // int constexpr kDIOBottom = 1;
 int constexpr kDIOTop = 0;
 
-//Intake Limit Switches
+// Intake Limit Switches
 // int constexpr kIntakeTopSensor = 3;
 // int constexpr kIntakeBottomSensor = 4;
 
@@ -71,25 +71,24 @@ int constexpr kClimberTopSensor = 4;
 int constexpr kClimberMidSensor = 3;
 int constexpr kClimberBotSensor = 2;
 
-
-//OI Indexes (joysticks/buttons)
+// OI Indexes (joysticks/buttons)
 int constexpr kDriverJoystick = 0;
 int constexpr kOperatorJoystick = 1;
 
 
-//Calibrated values
-//Auto calibration
-float constexpr kAutoMoveTicks = 3 * 50; //3 sec * 50 ticks/sec
+// Calibrated values
+// Auto calibration
+float constexpr kAutoMoveTicks = 3 * 50; // 3 sec * 50 ticks/sec
 
-//Shooter Speeds
+// Shooter Speeds
 float constexpr kSlowSpeed = 0.4;
 float constexpr kMedSpeed = 0.5;
 float constexpr kFastSpeed = 0.8;
 
-//Indexer Constants
+// Indexer Constants
 int constexpr kMaxPowerCellTravelTime = 100;
 
-//Color values
+// Color values
 float constexpr kBlueR = 0.13;
 float constexpr kBlueG = 0.43;
 float constexpr kBlueB = 0.43;
@@ -103,16 +102,16 @@ float constexpr kGrnR = 0.14;
 float constexpr kGrnG = 0.60;
 float constexpr kGrnB = 0.26;
 
-//Indexer bottom sensor timeout
-//Spins 760 rpms (diameter 1.5"), bottom sensor ~2" in
-//Band moves 60"/s
-//Ball moves 19"/s
-//Timeout = (gap + 7" - 2") / 19" = (gap + 5") / 19"       7" for ball, sensor is 2" in already
-//Need a timeout so they are indexed far enough
+// Indexer bottom sensor timeout
+// Spins 760 rpms (diameter 1.5"), bottom sensor ~2" in
+// Band moves 60"/s
+// Ball moves 19"/s
+// Timeout = (gap + 7" - 2") / 19" = (gap + 5") / 19"       7" for ball, sensor is 2" in already
+// Need a timeout so they are indexed far enough
 double constexpr kIndexerGap = 2;
 double constexpr kBottomIndexerTimeout = (kIndexerGap + 0) / 19;
 
-//Light codes:
+// Light codes
 int constexpr kLights_off = 0;
 int constexpr kLights_auto = 1;
 int constexpr kLights_shoot = 2;
