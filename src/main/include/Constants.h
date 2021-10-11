@@ -38,8 +38,8 @@ double constexpr kInHood = 0.2;
 
 // Climb Motor Controllers (PWMVictorSPX)
 // up raises the climb system, down retracts it & lifts the robot
-int constexpr kClimbUpMotor = 2;
-int constexpr kClimbDownMotor = 3;
+int constexpr kClimbUpMotor = 5;
+int constexpr kClimbDownMotor = 4;
 double constexpr kTakeUpSlackPercent = 0.3;
 
 // Intake Arm & Roller Motor Controllers (SpikeRelay)

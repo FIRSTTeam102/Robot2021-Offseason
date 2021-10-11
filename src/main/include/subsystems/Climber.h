@@ -13,40 +13,39 @@
 #include <frc/DigitalInput.h>
 
 class Climber : public frc2::SubsystemBase {
- public:
-  Climber(frc::XboxController* pOperatorJoystick);
+	public:
+		Climber(frc::XboxController* pOperatorJoystick);
 
-  /**
-   * Will be called periodically whenever the CommandScheduler runs.
-   */
-  void StopClimb();
-  void Climb();
-  
-  
-  void Periodic();
-  
-//magnetic limit switches are reversed, isClimbUp means !isClimbUp
-  bool isClimbUp() { return(!mTopSensor.Get()); }
-  bool isClimbMid() { return(!mMidSensor.Get()); }
-  bool isClimbDown() { return(!mBotSensor.Get()); }
+		/**
+		 * Will be called periodically whenever the CommandScheduler runs.
+		 */
+		void StopClimb();
+		void Climb();
+		
+		
+		void Periodic();
+		
+		// Magnetic limit switches are high when inactive
+		bool isClimbUp() { return(!mTopSensor.Get()); }
+		bool isClimbMid() { return(!mMidSensor.Get()); }
+		bool isClimbDown() { return(!mBotSensor.Get()); }
 
-  double ClimbSpeed() {
-    double speed = (0 - mpOperatorJoystick->GetRawAxis(1)) / 2; // right joystick y-axis
-    if (-0.01 < speed && speed < 0.01){
-      speed = 0;
-    }
-    return speed;
-  }
+		double ClimbSpeed() {
+			double speed = (0 - mpOperatorJoystick->GetRawAxis(1)) / 2; // left joystick y-axis
+			if (-0.1 < speed && speed < 0.1){
+				speed = 0;
+			}
+			return speed;
+		}
 
-
- private:
- // Components (e.g. motor controllers and sensors) should generally be
-  // declared private and exposed only through public methods.
-  frc::PWMVictorSPX mClimbUpMotor;
-  frc::PWMVictorSPX mClimbDownMotor;
-  frc::DigitalInput mTopSensor;
-  frc::DigitalInput mMidSensor;
-  frc::DigitalInput mBotSensor;
-  frc::XboxController* mpOperatorJoystick;
-  
+	private:
+		// Components (e.g. motor controllers and sensors) should generally be
+		// declared private and exposed only through public methods.
+		frc::PWMVictorSPX mClimbUpMotor;
+		frc::PWMVictorSPX mClimbDownMotor;
+		frc::DigitalInput mTopSensor;
+		frc::DigitalInput mMidSensor;
+		frc::DigitalInput mBotSensor;
+		frc::XboxController* mpOperatorJoystick;
+	
 };

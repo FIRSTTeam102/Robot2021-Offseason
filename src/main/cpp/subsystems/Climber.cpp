@@ -9,40 +9,45 @@
 #include "RobotContainer.h"
 #include "Constants.h"
 
-Climber::Climber(frc::XboxController* pOperatorJoystick):  
-    mClimbUpMotor{kClimbUpMotor},
-    mClimbDownMotor{kClimbDownMotor},
-    mTopSensor{kClimberTopSensor},
-    mMidSensor{kClimberMidSensor},
-    mBotSensor{kClimberBotSensor},
-    mpOperatorJoystick{pOperatorJoystick}
+Climber::Climber(frc::XboxController *pOperatorJoystick) :
+	mClimbUpMotor{kClimbUpMotor},
+	mClimbDownMotor{kClimbDownMotor},
+	mTopSensor{kClimberTopSensor},
+	mMidSensor{kClimberMidSensor},
+	mBotSensor{kClimberBotSensor},
+	mpOperatorJoystick{pOperatorJoystick}
 {
-    mClimbUpMotor.SetInverted(true);
-    mClimbDownMotor.SetInverted(true);
-}
-//stop all climber motors
-void Climber::StopClimb(){
-    mClimbUpMotor.Set(0);
-    mClimbDownMotor.Set(0);
+	mClimbUpMotor.SetInverted(true);
+	mClimbDownMotor.SetInverted(true);
 }
 
-//raise the climber
-void Climber::Climb(){
-    if (ClimbSpeed() > 0 && !isClimbUp()) {
-        mClimbUpMotor.Set(ClimbSpeed());
-        mClimbDownMotor.Set(0);
-        //mClimbUpMotor.Set(-ClimbSpeed());
-        //mClimbDownMotor.Set(ClimbSpeed()); //For unraveling winch
-    }
-    else if (ClimbSpeed() < 0 && !isClimbDown()) {
-        mClimbUpMotor.Set(ClimbSpeed() * kTakeUpSlackPercent);
-        mClimbDownMotor.Set(ClimbSpeed());
-    }
-    else {
-        StopClimb();
-    }
+// Stop all climber motors
+void Climber::StopClimb()
+{
+	mClimbUpMotor.Set(0);
+	mClimbDownMotor.Set(0);
 }
+
+// Raise the climber
+void Climber::Climb()
+{
+	printf("Climb status: up %d		mid %d		down %d		speed: %F	", isClimbUp(), isClimbMid(), isClimbDown(), ClimbSpeed());
+	if (ClimbSpeed() > 0 && !isClimbUp()) {
+		printf("Climbing up");
+		mClimbUpMotor.Set(ClimbSpeed());
+		mClimbDownMotor.Set(0);
+	} else if (ClimbSpeed() < 0 && !isClimbDown()) {
+		printf("Climbing down");
+		mClimbUpMotor.Set(ClimbSpeed() * kTakeUpSlackPercent);
+		mClimbDownMotor.Set(ClimbSpeed());
+	} else {
+		printf("Climbing stopped");
+		StopClimb();
+	}
+	printf("	Up speed %F		Down speed %F\n\n", mClimbUpMotor.Get(), mClimbDownMotor.Get());
+}
+
 // This method will be called once per scheduler run
-void Climber::Periodic()  {
-
+void Climber::Periodic()
+{
 }
