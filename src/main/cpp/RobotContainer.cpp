@@ -13,31 +13,32 @@
 RobotContainer::RobotContainer()
 {
 	// Initialize all of your commands and subsystems here
-	//drive
+
 	// Configure the button bindings
 	ConfigureButtonBindings();
-	// tank drive controller init
+
+	// Tank drive controller init
 	mTankDrive.SetDefaultCommand(std::move(mDriveCommand));
 	mTankDrive.setDriverJoystick(&mDriverController);
-	// cameras 0 & 1 init
+
+	mClimber.SetDefaultCommand(std::move(mClimbCommand));
+	// mIndexer.SetDefaultCommand(std::move(mIndexCommand));
+
+	// Cameras 0 & 1 init
 	mCamera1 = frc::CameraServer::GetInstance()->StartAutomaticCapture(0);
 	mCamera2 = frc::CameraServer::GetInstance()->StartAutomaticCapture(1);
-	// get video stream from camera 1
+	// Get video stream from camera 1
 	frc::CameraServer::GetInstance()->GetServer().SetSource(mCamera1);
+
 	// Shuffleboard info/controls
-	// change size to .WithSize(4,4)
-	// 	and edit tile size to be >= 256-ish in "File" -> "Default Tile Size"
+	// change size to .WithSize(4,4) and edit tile size to be >= 256-ish in "File" -> "Default Tile Size"
 	frc::Shuffleboard::GetTab("Drive Info")
 			.Add("Camera Stream", mCamera1)
 			.WithWidget(frc::BuiltInWidgets::kCameraStream)
 			.WithSize(4, 3)
 			.WithPosition(4, 0);
 
-	mClimber.SetDefaultCommand(std::move(mClimbCommand));
-
-	// mIndexer.SetDefaultCommand(std::move(mIndexCommand));
-
-	// camera servo controller
+	// Camera servo controller
 	mCameraServo.SetDefaultCommand(std::move(mServoCommand));
 	mCameraServo.setServoJoystick(&mOperatorController);
 }
@@ -45,32 +46,28 @@ RobotContainer::RobotContainer()
 void RobotContainer::ConfigureButtonBindings()
 {
 	// Configure your button bindings here
-	mDriverButtonA.WhenPressed(&mFlipDriveCommand, true); // (&mPrepShootingFast, true);
-	mDriverButtonB.WhenHeld(&mPositionCommand, true);			// (&mPrepShootingMed, true);
-	// mDriverButtonX.WhenHeld(&mRotateCommand, true);				// (&mStopShootingCommand, false);
-	mDriverButtonX.WhenPressed(&mIndexOnceCommand, true);
-	// mDriverButtonY.WhenHeld(&mManualPanelCommand, false); // (&mPrepShootingSlow, true);
-	// mDriverButtonY.WhenPressed(&mToggleLift, true);
+
+	// mDriverButtonB.WhenHeld(&mPositionControlPanelCommand, true);
+	// mDriverButtonX.WhenHeld(&mRotateControlPanelCommand, true);
+	// mDriverButtonY.WhenHeld(&mManualControlPanelCommand, false);
 	// mDriverButtonLB.WhenHeld(&mSlowLeftCommand, true);
 	// mDriverButtonRB.WhenHeld(&mSlowRightCommand, true);
-	// mDriverButtonRMenu.WhenPressed(&mFlipDriveCommand, false);
-	mDriverDownDPad.WhenPressed(&mLowerArmCommand, true);
-	mDriverUpDPad.WhenPressed(&mRaiseArmCommand, true);
+	mDriverButtonRMenu.WhenPressed(&mFlipDriveCommand, false);
+	mDriverLT.WhenPressed(&mIndexOnceCommand, true);
 	mDriverRT.WhenHeld(&mShootCommand, false);
 	// mDriverUpDPad.WhenPressed(&mDeployManipulatorCommand, false);
 	// mDriverDownDPad.WhenPressed(&mRetractManipulatorCommand, false);
 
-	mOperatorButtonA.WhenPressed(&mPrepShootingSlow, true);	 // (&mRotateCommand, true);
-	mOperatorButtonB.WhenPressed(&mPrepShootingMed, true);	 // (&mPositionCommand, true);
-	mOperatorButtonX.WhenHeld(&mStopShootingCommand, false); // (&mStopPanelCommand, false);
-	mOperatorButtonY.WhenPressed(&mPrepShootingFast, true);	 // (&mManualPanelCommand, true);
+	mOperatorButtonA.WhenPressed(&mPrepShootingSlow, true);
+	mOperatorButtonB.WhenPressed(&mPrepShootingMed, true);
+	mOperatorButtonX.WhenHeld(&mStopShootingCommand, false);
+	mOperatorButtonY.WhenPressed(&mPrepShootingFast, true);
 	mOperatorButtonLB.WhenHeld(&mBallJamCommand, true);
 	mOperatorButtonRB.WhenHeld(&mResetCommand, true);
-	mOperatorButtonRB.WhenReleased(&mRaiseArmCommand, true);
+	mOperatorDownDPad.WhenPressed(&mLowerArmCommand, true);
+	mOperatorUpDPad.WhenPressed(&mRaiseArmCommand, true);
 	mOperatorLT.WhenHeld(&mAimLM, true);
 	// must be added- mOperatorButtonLMenu(toggle danger buttons)
-
-	// See also: NextCamera.cpp, PreviousCamera.cpp
 	// mOperatorButtonLMenu.WhenPressed(&mPrevCamCommand, true);
 	mOperatorButtonRMenu.WhenPressed(&mNextCamCommand, true);
 }

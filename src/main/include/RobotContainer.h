@@ -130,10 +130,10 @@ private:
 	StopShootingPowerCells mStopShootingCommand{&mIndexer, &mShooter};
 
 	ControlPanelManipulator mControlPanel;
-	RotateControlPanel mRotateCommand{&mControlPanel, &mTankDrive};
-	PositionControlPanel mPositionCommand{&mControlPanel, &mTankDrive};
-	StopControlPanel mStopPanelCommand{&mControlPanel, &mTankDrive};
-	ManualControlPanel mManualPanelCommand{&mControlPanel};
+	RotateControlPanel mRotateControlPanelCommand{&mControlPanel, &mTankDrive};
+	PositionControlPanel mPositionControlPanelCommand{&mControlPanel, &mTankDrive};
+	StopControlPanel mStopControlPanelCommand{&mControlPanel, &mTankDrive};
+	ManualControlPanel mManualControlPanelCommand{&mControlPanel};
 
 	LM mLM;
 	AimLM mAimLM{&mLM, &mShooter, &mTankDrive};
