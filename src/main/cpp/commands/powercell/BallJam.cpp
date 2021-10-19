@@ -17,8 +17,8 @@ BallJam::BallJam(Indexer* pIndexer, Shooter* pShooter): mpIndexer{pIndexer}, mpS
 
 // Called when the command is initially scheduled.
 void BallJam::Initialize() {
-  mpShooter->setSpeed(-0.2);
-  mpShooter->startMotor();
+  // mpShooter->setSpeed(-0.2);
+  // mpShooter->startMotor();
 }
 
 // Called repeatedly when this Command is scheduled to run
@@ -29,7 +29,7 @@ void BallJam::Execute() {
 // Called once the command ends or is interrupted.
 void BallJam::End(bool interrupted) {
   mpIndexer->stopIndexer();
-  mpShooter->stopMotor();
+  // mpShooter->stopMotor();
 }
 
 // Returns true when the command should end.

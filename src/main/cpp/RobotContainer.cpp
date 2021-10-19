@@ -63,7 +63,8 @@ void RobotContainer::ConfigureButtonBindings()
 	mOperatorButtonX.WhenHeld(&mStopShootingCommand, false);
 	mOperatorButtonY.WhenPressed(&mPrepShootingFast, true);
 	mOperatorButtonLB.WhenHeld(&mBallJamCommand, true);
-	mOperatorButtonRB.WhenHeld(&mResetCommand, true);
+	mOperatorButtonRB.WhenHeld(&mShootCommand, false);
+	mOperatorRightDPad.WhenHeld(&mResetCommand, true);
 	mOperatorDownDPad.WhenPressed(&mLowerArmCommand, true);
 	mOperatorUpDPad.WhenPressed(&mRaiseArmCommand, true);
 	mOperatorLT.WhenHeld(&mAimLM, true);
