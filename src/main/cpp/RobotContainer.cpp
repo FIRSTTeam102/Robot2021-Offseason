@@ -31,12 +31,20 @@ RobotContainer::RobotContainer()
 	frc::CameraServer::GetInstance()->GetServer().SetSource(mCamera1);
 
 	// Shuffleboard info/controls
-	// change size to .WithSize(4,4) and edit tile size to be >= 256-ish in "File" -> "Default Tile Size"
+	// change size to .WithSize(4,4)
+	// 	and edit tile size to be > or = 256-ish in "File" -> "Default Tile Size"
+	// recommended settings:
+	// compression=60, fps=30, resolution=144x81
+	
+	// WHAT IS A STRINGMAP AAAAAAAAAAAAAAAAAAAAAA
+	//wpi::StringMap<int> testMap = {{"min", 0}, {"max", 1}};
 	frc::Shuffleboard::GetTab("Drive Info")
 			.Add("Camera Stream", mCamera1)
 			.WithWidget(frc::BuiltInWidgets::kCameraStream)
-			.WithSize(4, 3)
-			.WithPosition(4, 0);
+			.WithSize(2, 1)
+			//.WithProperties(wpi::StringMap<std::string>({"min",0,"max",0}))
+			//.WithProperties(testMap)
+			.WithPosition(0, 0);
 
 	// Camera servo controller
 	mCameraServo.SetDefaultCommand(std::move(mServoCommand));
