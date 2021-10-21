@@ -37,5 +37,5 @@ void IndexSingleCell::End(bool interrupted) {
 
 // Returns true when the command should end.
 bool IndexSingleCell::IsFinished() { 
-	return mpIndexer->isPowerCellAtTop() || (timer >= 12);
+	return mpIndexer->isPowerCellAtTop() || (timer >= 9);
 }
