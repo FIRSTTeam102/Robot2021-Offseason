@@ -41,10 +41,10 @@ void DriveTrain::tankDrive(){
 	double leftSpeed = speedPercent * mpDriverJoystick->GetRawAxis(1); // Cap: 690rpm
 	double rightSpeed = speedPercent * mpDriverJoystick->GetRawAxis(5); // Cap: 697rpm
 	if (!inverted) {
-		mDrive.TankDrive(leftSpeed, rightSpeed,true);
+		mDrive.TankDrive(-leftSpeed, -rightSpeed,true);
 	}
 	else {
-		mDrive.TankDrive(-rightSpeed, -leftSpeed, true);
+		mDrive.TankDrive(rightSpeed, leftSpeed, true);
 	}
 	//printf("Driving: %f, %f\n", leftSpeed, rightSpeed);
 }
@@ -62,10 +62,10 @@ void DriveTrain::arcadeDrive(){
 	double speed = speedPercent * mpDriverJoystick->GetRawAxis(1); // Cap: 690rpm
 	double rotation = rotationPercent * mpDriverJoystick->GetRawAxis(4); // Cap: 697rpm
 	if (!inverted) {
-		mDrive.ArcadeDrive(-speed, rotation, true);
+		mDrive.ArcadeDrive(speed, rotation, true);
 	}
 	else {
-		mDrive.ArcadeDrive(speed, rotation, true);
+		mDrive.ArcadeDrive(-speed, rotation, true);
 	}
 }
 
