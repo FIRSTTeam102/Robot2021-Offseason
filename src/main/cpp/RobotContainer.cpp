@@ -21,7 +21,8 @@ RobotContainer::RobotContainer()
 	mTankDrive.SetDefaultCommand(std::move(mDriveCommand));
 	mTankDrive.setDriverJoystick(&mDriverController);
 
-	mClimber.SetDefaultCommand(std::move(mClimbCommand));
+	// mClimber.SetDefaultCommand(std::move(mClimbCommand));
+
 	// mIndexer.SetDefaultCommand(std::move(mIndexCommand));
 
 	// Cameras 0 & 1 init
