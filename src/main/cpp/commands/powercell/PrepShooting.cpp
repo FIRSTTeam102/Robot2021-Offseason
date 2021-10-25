@@ -15,7 +15,7 @@ PrepShooting::PrepShooting(Indexer* pIndexer, Shooter* pShooter, float shooterSp
   // Add your commands here, e.g.
   // AddCommands(FooCommand(), BarCommand());
 
-  AddCommands(AimShooter(pShooter, shooterSpeed), PrimeIndexer(pIndexer));
+  AddCommands(AimShooter(pShooter, shooterSpeed)/*, PrimeIndexer(pIndexer)*/);
 
   //update the shuffle board driver info: Fly Wheel Speed
   std::string shootRange = "";

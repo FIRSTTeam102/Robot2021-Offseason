@@ -9,6 +9,7 @@
 
 #include <frc2/command/Command.h>
 #include <frc/XboxController.h>
+#include <frc/GenericHID.h>
 #include <frc2/command/button/JoystickButton.h>
 #include <frc2/command/button/Button.h>
 #include <frc/smartdashboard/SmartDashboard.h>
@@ -63,47 +64,49 @@ public:
 
 	frc2::Command *GetAutonomousCommand(int slot, bool shoot, int move, bool shoot2);
 
-	frc::XboxController *GetDriverJoystick()
-	{
-		return &mDriverController;
-	}
+	frc::XboxController *GetDriverJoystick() { return &mDriverController; }
 
 private:
+	void ConfigureButtonBindings();
+
 	// The robot's subsystems and commands are defined here...
+
+	frc::XboxController mDriverController{0};
+	frc2::Button mDriverButtonA{[&] { return mDriverController.GetAButton(); }};
+	frc2::Button mDriverButtonB{[&] { return mDriverController.GetBButton(); }};
+	frc2::Button mDriverButtonX{[&] { return mDriverController.GetXButton(); }};
+	frc2::Button mDriverButtonY{[&] { return mDriverController.GetYButton(); }};
+	frc2::Button mDriverButtonLB{[&] { return mDriverController.GetBumper(frc::GenericHID::JoystickHand::kLeftHand); }};
+	frc2::Button mDriverButtonRB{[&] { return mDriverController.GetBumper(frc::GenericHID::JoystickHand::kRightHand); }};
+	frc2::Button mDriverButtonLMenu{[&] { return mDriverController.GetBackButton(); }};
+	frc2::Button mDriverButtonRMenu{[&] { return mDriverController.GetStartButton(); }};
+	frc2::Button mDriverLT{[&] { return (mDriverController.GetTriggerAxis(frc::GenericHID::JoystickHand::kLeftHand) > 0.5); }};
+	frc2::Button mDriverRT{[&] { return (mDriverController.GetTriggerAxis(frc::GenericHID::JoystickHand::kRightHand) > 0.5); }};
+	frc2::Button mDriverUpDPad{[&] { return (mDriverController.GetPOV() == 0); }};
+	frc2::Button mDriverLeftDPad{[&] { return (mDriverController.GetPOV() == 90); }};
+	frc2::Button mDriverDownDPad{[&] { return (mDriverController.GetPOV() == 180); }};
+	frc2::Button mDriverRightDPad{[&] { return (mDriverController.GetPOV() == 270); }};
+
+	frc::XboxController mOperatorController{1};
+	frc2::Button mOperatorButtonA{[&] { return mOperatorController.GetAButton(); }};
+	frc2::Button mOperatorButtonB{[&] { return mOperatorController.GetBButton(); }};
+	frc2::Button mOperatorButtonX{[&] { return mOperatorController.GetXButton(); }};
+	frc2::Button mOperatorButtonY{[&] { return mOperatorController.GetYButton(); }};
+	frc2::Button mOperatorButtonLB{[&] { return mOperatorController.GetBumper(frc::GenericHID::JoystickHand::kLeftHand); }};
+	frc2::Button mOperatorButtonRB{[&] { return mOperatorController.GetBumper(frc::GenericHID::JoystickHand::kRightHand); }};
+	frc2::Button mOperatorButtonLMenu{[&] { return mOperatorController.GetBackButton(); }};
+	frc2::Button mOperatorButtonRMenu{[&] { return mOperatorController.GetStartButton(); }};
+	frc2::Button mOperatorLT{[&] { return mOperatorController.GetTriggerAxis(frc::GenericHID::JoystickHand::kLeftHand) > 0.5; }};
+	frc2::Button mOperatorRT{[&] { return mOperatorController.GetTriggerAxis(frc::GenericHID::JoystickHand::kRightHand) > 0.5; }};
+	frc2::Button mOperatorUpDPad{[&] { return (mOperatorController.GetPOV() == 0); }};
+	frc2::Button mOperatorLeftDPad{[&] { return (mOperatorController.GetPOV() == 90); }};
+	frc2::Button mOperatorDownDPad{[&] { return (mOperatorController.GetPOV() == 180); }};
+	frc2::Button mOperatorRightDPad{[&] { return (mOperatorController.GetPOV() == 270); }};
+
+	// Lights mLights;
 
 	CameraServo mCameraServo;
 	MoveCameraServo mServoCommand{&mCameraServo};
-
-	frc::XboxController mDriverController{0};
-	frc2::Button mDriverButtonA{[&] { return mDriverController.GetRawButton(1); }};
-	frc2::Button mDriverButtonB{[&] { return mDriverController.GetRawButton(2); }};
-	frc2::Button mDriverButtonX{[&] { return mDriverController.GetRawButton(3); }};
-	frc2::Button mDriverButtonY{[&] { return mDriverController.GetRawButton(4); }};
-	frc2::Button mDriverButtonLB{[&] { return mDriverController.GetRawButton(5); }};
-	frc2::Button mDriverButtonRB{[&] { return mDriverController.GetRawButton(6); }};
-	frc2::Button mDriverButtonLMenu{[&] { return mDriverController.GetRawButton(7); }};
-	frc2::Button mDriverButtonRMenu{[&] { return mDriverController.GetRawButton(8); }};
-	frc2::Button mDriverLT{[&] { return (mDriverController.GetRawAxis(2) > 0.5); }};
-	frc2::Button mDriverRT{[&] { return (mDriverController.GetRawAxis(3) > 0.5); }};
-	frc2::Button mDriverUpDPad{[&] { return (mDriverController.GetPOV() == 0); }};
-	frc2::Button mDriverDownDPad{[&] { return (mDriverController.GetPOV() == 180); }};
-
-	frc::XboxController mOperatorController{1};
-	frc2::Button mOperatorButtonA{[&] { return mOperatorController.GetRawButton(1); }};
-	frc2::Button mOperatorButtonB{[&] { return mOperatorController.GetRawButton(2); }};
-	frc2::Button mOperatorButtonX{[&] { return mOperatorController.GetRawButton(3); }};
-	frc2::Button mOperatorButtonY{[&] { return mOperatorController.GetRawButton(4); }};
-	frc2::Button mOperatorButtonLB{[&] { return mOperatorController.GetRawButton(5); }};
-	frc2::Button mOperatorButtonRB{[&] { return mOperatorController.GetRawButton(6); }};
-	frc2::Button mOperatorButtonLMenu{[&] { return mOperatorController.GetRawButton(7); }};
-	frc2::Button mOperatorButtonRMenu{[&] { return mOperatorController.GetRawButton(8); }};
-
-	frc2::Button mOperatorLT{[&] { return mOperatorController.GetRawAxis(2) > 0.5; }};
-	frc2::Button mOperatorRT{[&] { return mOperatorController.GetRawAxis(3) > 0.5; }};
-	frc2::Button mOperatorUpDPad{[&] { return (mOperatorController.GetPOV() == 0); }};
-	frc2::Button mOperatorDownDPad{[&] { return (mOperatorController.GetPOV() == 180); }};
-
-	//Lights mLights;
 
 	DriveTrain mTankDrive;
 	DriveWithXbox mDriveCommand{&mTankDrive};
@@ -127,10 +130,10 @@ private:
 	StopShootingPowerCells mStopShootingCommand{&mIndexer, &mShooter};
 
 	ControlPanelManipulator mControlPanel;
-	RotateControlPanel mRotateCommand{&mControlPanel, &mTankDrive};
-	PositionControlPanel mPositionCommand{&mControlPanel, &mTankDrive};
-	StopControlPanel mStopPanelCommand{&mControlPanel, &mTankDrive};
-	ManualControlPanel mManualPanelCommand{&mControlPanel};
+	RotateControlPanel mRotateControlPanelCommand{&mControlPanel, &mTankDrive};
+	PositionControlPanel mPositionControlPanelCommand{&mControlPanel, &mTankDrive};
+	StopControlPanel mStopControlPanelCommand{&mControlPanel, &mTankDrive};
+	ManualControlPanel mManualControlPanelCommand{&mControlPanel};
 
 	LM mLM;
 	AimLM mAimLM{&mLM, &mShooter, &mTankDrive};
@@ -140,12 +143,10 @@ private:
 
 	cs::UsbCamera mCamera1;
 	cs::UsbCamera mCamera2;
-	//cs::UsbCamera mCamera3;
+	// cs::UsbCamera mCamera3;
 	NextCamera mNextCamCommand{&mCamera1, &mCamera2};
 	PreviousCamera mPrevCamCommand{&mCamera1, &mCamera2};
 
 	// Pneumatics mPneumatics;
 	// ToggleLift mToggleLift{&mPneumatics};
-
-	void ConfigureButtonBindings();
 };

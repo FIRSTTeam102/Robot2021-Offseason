@@ -21,8 +21,8 @@ LowerArm::LowerArm(Intake* pIntake, Indexer* pIndexer): mpIntake{pIntake}, mpInd
 //    start the intakeArmRollers moving forward and lower the intake arm
 //    so that power cells can be moved toward the indexer
 void LowerArm::Initialize() {
-   mpIntake->startRollers();
    mpIndexer->enable();
+   mpIntake->startRollers();
    counter = 0;
 }
 

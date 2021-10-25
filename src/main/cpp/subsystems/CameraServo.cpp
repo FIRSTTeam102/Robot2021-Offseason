@@ -12,7 +12,7 @@ CameraServo::CameraServo():
 {
     cameraServoXPosition = 0.5;
     mCameraServoX.Set(cameraServoXPosition);
-    cameraServoYPosition= 0.5;
+    cameraServoYPosition= 0.18;
     mCameraServoY.Set(cameraServoYPosition);
 }
 
@@ -63,5 +63,5 @@ void CameraServo::controlServoWithJoystick()
     else {
         mCameraServoY.Set(currServoYPos - verticalPower );
     }
-    //printf("Position set to: (%f, %f)\n", cameraServoXPosition, cameraServoYPosition);
+    // printf("Camera servo position: (%f, %f)\n", mCameraServoX.Get(), mCameraServoY.Get());
 }

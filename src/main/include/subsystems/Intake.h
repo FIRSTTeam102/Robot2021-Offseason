@@ -34,7 +34,7 @@ class Intake : public frc2::SubsystemBase {
 
  private:
   frc::Relay mIntakeArmMotor;
-  frc::Relay mIntakeRollerMotor;
+  WPI_TalonSRX mIntakeRollerMotor;
   // frc::DigitalInput mUpSensor;
   // frc::DigitalInput mDownSensor;
 };
