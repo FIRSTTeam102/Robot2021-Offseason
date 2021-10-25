@@ -23,7 +23,7 @@
 class TurnDegrees
     : public frc2::CommandHelper<frc2::CommandBase, TurnDegrees> {
  public:
-  TurnDegrees(DriveTrain* pDriveTrain, int degrees);
+  TurnDegrees(DriveTrain* pDriveTrain, double degrees, double speed);
 
   void Initialize() override;
 
@@ -33,8 +33,8 @@ class TurnDegrees
 
   bool IsFinished() override;
  private:
-  int mDegrees;
-  int readDegs;
-  int startDegs;
+  double mDegrees;
+  double mSpeed;
+  int mTarget;
   DriveTrain* mpDriveTrain;
 };
