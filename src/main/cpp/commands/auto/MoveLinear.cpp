@@ -29,8 +29,5 @@ void MoveLinear::End(bool interrupted) {
 
 // Returns true when the command should end.
 bool MoveLinear::IsFinished() { 
-  if(ticksPassed >= mTicks){
-    return true;
-  }
-  return false; 
-  }
+  return ticksPassed >= mTicks;
+}
