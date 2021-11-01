@@ -21,7 +21,8 @@ RobotContainer::RobotContainer()
 	mTankDrive.SetDefaultCommand(std::move(mDriveCommand));
 	mTankDrive.setDriverJoystick(&mDriverController);
 
-	mClimber.SetDefaultCommand(std::move(mClimbCommand));
+	// mClimber.SetDefaultCommand(std::move(mClimbCommand));
+
 	// mIndexer.SetDefaultCommand(std::move(mIndexCommand));
 
 	// Cameras 0 & 1 init
@@ -31,12 +32,20 @@ RobotContainer::RobotContainer()
 	frc::CameraServer::GetInstance()->GetServer().SetSource(mCamera1);
 
 	// Shuffleboard info/controls
-	// change size to .WithSize(4,4) and edit tile size to be >= 256-ish in "File" -> "Default Tile Size"
+	// change size to .WithSize(4,4)
+	// 	and edit tile size to be > or = 256-ish in "File" -> "Default Tile Size"
+	// recommended settings:
+	// compression=60, fps=30, resolution=144x81
+	
+	// WHAT IS A STRINGMAP AAAAAAAAAAAAAAAAAAAAAA
+	//wpi::StringMap<int> testMap = {{"min", 0}, {"max", 1}};
 	frc::Shuffleboard::GetTab("Drive Info")
 			.Add("Camera Stream", mCamera1)
 			.WithWidget(frc::BuiltInWidgets::kCameraStream)
-			.WithSize(4, 3)
-			.WithPosition(4, 0);
+			.WithSize(2, 1)
+			//.WithProperties(wpi::StringMap<std::string>({"min",0,"max",0}))
+			//.WithProperties(testMap)
+			.WithPosition(0, 0);
 
 	// Camera servo controller
 	mCameraServo.SetDefaultCommand(std::move(mServoCommand));
@@ -47,23 +56,22 @@ void RobotContainer::ConfigureButtonBindings()
 {
 	// Configure your button bindings here
 
-	// mDriverButtonB.WhenHeld(&mPositionControlPanelCommand, true);
-	// mDriverButtonX.WhenHeld(&mRotateControlPanelCommand, true);
-	// mDriverButtonY.WhenHeld(&mManualControlPanelCommand, false);
+	mDriverButtonB.WhenHeld(&mPositionControlPanelCommand, true);
+	mDriverButtonX.WhenHeld(&mRotateControlPanelCommand, true);
+	mDriverButtonY.WhenHeld(&mManualControlPanelCommand, false);
 	// mDriverButtonLB.WhenHeld(&mSlowLeftCommand, true);
 	// mDriverButtonRB.WhenHeld(&mSlowRightCommand, true);
 	mDriverButtonRMenu.WhenPressed(&mFlipDriveCommand, false);
 	mDriverLT.WhenPressed(&mIndexOnceCommand, true);
 	mDriverRT.WhenHeld(&mShootCommand, false);
-	// mDriverUpDPad.WhenPressed(&mDeployManipulatorCommand, false);
-	// mDriverDownDPad.WhenPressed(&mRetractManipulatorCommand, false);
 
 	mOperatorButtonA.WhenPressed(&mPrepShootingSlow, true);
 	mOperatorButtonB.WhenPressed(&mPrepShootingMed, true);
 	mOperatorButtonX.WhenHeld(&mStopShootingCommand, false);
 	mOperatorButtonY.WhenPressed(&mPrepShootingFast, true);
 	mOperatorButtonLB.WhenHeld(&mBallJamCommand, true);
-	mOperatorButtonRB.WhenHeld(&mResetCommand, true);
+	mOperatorButtonRB.WhenHeld(&mShootCommand, false);
+	mOperatorRightDPad.WhenHeld(&mResetCommand, true);
 	mOperatorDownDPad.WhenPressed(&mLowerArmCommand, true);
 	mOperatorUpDPad.WhenPressed(&mRaiseArmCommand, true);
 	mOperatorLT.WhenHeld(&mAimLM, true);

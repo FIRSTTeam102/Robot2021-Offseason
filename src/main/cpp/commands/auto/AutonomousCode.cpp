@@ -23,7 +23,7 @@ AutonomousCode::AutonomousCode(DriveTrain* pDriveTrain, Intake* pIntake, Indexer
     AddCommands(GetRascals(mpDriveTrain, mpIntake, mpIndexer));
     if (shoot2) { //Shoot again
       printf("Shooting from trench\n");
-      AddCommands(TurnDegrees(mpDriveTrain, -11.5), AimShooter(mpShooter, kMedSpeed), ShootPowerCells(mpIndexer, mpShooter));
+      AddCommands(TurnDegrees(mpDriveTrain, -11.5, kSlowSpeed), AimShooter(mpShooter, kMedSpeed), ShootPowerCells(mpIndexer, mpShooter));
     }
   }
   else if (move == 2) { //Back up the whole time

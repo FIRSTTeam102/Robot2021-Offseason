@@ -19,7 +19,7 @@ GetRascals::GetRascals(DriveTrain* pDriveTrain, Intake* pIntake, Indexer* pIndex
   // Add your commands here, e.g.
   // AddCommands(FooCommand(), BarCommand());
   printf("GET THOSE RASCALS!!!\n");
-  AddCommands(TurnDegrees(pDriveTrain, 28), //Straighten out
+  AddCommands(TurnDegrees(pDriveTrain, 28, kSlowSpeed), //Straighten out
   LowerArm(pIntake, pIndexer), //Prepare to intake balls
   MoveLinear(pDriveTrain, kAutoMoveTicks, -1), //Capture balls into intake area
   RaiseArm(pIntake, pIndexer)); //Raise the arm
