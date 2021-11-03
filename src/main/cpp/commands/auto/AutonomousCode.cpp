@@ -13,9 +13,11 @@
 AutonomousCode::AutonomousCode(DriveTrain* pDriveTrain, Intake* pIntake, Indexer* pIndexer, Shooter* pShooter, int slot, bool shoot, int move, bool shoot2): mpDriveTrain{pDriveTrain}, mpIntake{pIntake}, mpIndexer{pIndexer}, mpShooter{pShooter} {printf("Running auto\n");
   // Add your commands here, e.g.
   // AddCommands(FooCommand(), BarCommand());
+  pDriveTrain->stop();
   if (shoot) { //Shoot initial cells
-    printf("Shooting\n");
-    AddCommands(AimShooter(mpShooter, kFastSpeed), ShootPowerCells(mpIndexer, mpShooter));
+    printf("balls balls balls balls balls\n");
+    AddCommands(AimShooter(mpShooter, kFastSpeed), Delay(25));
+    AddCommands(ShootPowerCells(mpIndexer, mpShooter));
   }
   //if (mShoot && mSlot == 2 && mMove == 1) { //Shot old balls, near trench, going to pick up trench balls
   if (slot == 2 && move == 1) { //Not necessarily shot old balls, near trench, going to pick up trench balls
@@ -26,7 +28,7 @@ AutonomousCode::AutonomousCode(DriveTrain* pDriveTrain, Intake* pIntake, Indexer
       AddCommands(TurnDegrees(mpDriveTrain, -11.5, kSlowSpeed), AimShooter(mpShooter, kMedSpeed), ShootPowerCells(mpIndexer, mpShooter));
     }
   }
-  else if (move == 2) { //Back up the whole time
+  else if (move == 2) { //Back up the whole time 
     printf("Backing up\n");
     AddCommands(BackUp(mpDriveTrain));
   }

@@ -15,6 +15,7 @@
 #include "commands/auto/GetRascals.h"
 #include "commands/powercell/AimShooter.h"
 #include "commands/powercell/ShootPowerCells.h"
+#include "commands/Delay.h"
 
 #include "subsystems/DriveTrain.h"
 #include "subsystems/Intake.h"
