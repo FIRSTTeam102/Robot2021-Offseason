@@ -5,32 +5,31 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-//Autonomous stage 3
+// Autonomous stage 3
 #include "commands/auto/BackUp.h"
 
-BackUp::BackUp(DriveTrain* pTankDrive):  mpTankDrive(pTankDrive){
+BackUp::BackUp(DriveTrain* pDriveTrain, double distance):  mpDriveTrain(pDriveTrain), mDistance(distance) {
 	// Use addRequirements() here to declare subsystem dependencies.
-	AddRequirements(pTankDrive);
-	//ticksPassed = 0;
+	AddRequirements(mpDriveTrain);
 }
 
 // Called when the command is initially scheduled.
 void BackUp::Initialize() {
-	ticksPassed = 0;
+	mpDriveTrain->resetEncs();
 }
 
 // Called repeatedly when this Command is scheduled to run
 void BackUp::Execute() {
 	ticksPassed++;
-	mpTankDrive->move(-0.5, -0.5);
+	mpDriveTrain->move(-0.5, -0.5);
 }
 
 // Called once the command ends or is interrupted.
 void BackUp::End(bool interrupted) {
-	mpTankDrive->stop();
+	mpDriveTrain->stop();
 }
 
 // Returns true when the command should end.
 bool BackUp::IsFinished() {
-	return (ticksPassed >= 200); //Drives robot backwards for 200 ticks. 200 in this case might need to be changed if the robot does not drive far enough or drives too far
+	return mpDriveTrain->getREncs() >= mDistance; // inches
 }

@@ -27,6 +27,8 @@ DriveTrain::DriveTrain():
 	.WithWidget(frc::BuiltInWidgets::kBooleanBox)
 	.WithPosition (1,0);
 
+	mLeftEnc.SetDistancePerPulse(EncoderDistancePerPulse);
+	mRightEnc.SetDistancePerPulse(EncoderDistancePerPulse);
 }
 
 // This method will be called once per scheduler run

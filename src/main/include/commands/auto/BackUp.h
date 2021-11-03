@@ -11,27 +11,20 @@
 #include <frc2/command/CommandHelper.h>
 #include <subsystems/DriveTrain.h> //used for light stuffs
 
-/**
- * An example command.
- *
- * <p>Note that this extends CommandHelper, rather extending CommandBase
- * directly; this is crucially important, or else the decorator functions in
- * Command will *not* work!
- */
-class BackUp
-    : public frc2::CommandHelper<frc2::CommandBase, BackUp> {
- public:
-  explicit BackUp(DriveTrain* pTankDrive);
+class BackUp : public frc2::CommandHelper<frc2::CommandBase, BackUp> {
+	public:
+		explicit BackUp(DriveTrain* pDriveTrain, double distance = 24);
 
-  void Initialize() override;
+		void Initialize() override;
 
-  void Execute() override;
+		void Execute() override;
 
-  void End(bool interrupted) override;
+		void End(bool interrupted) override;
 
-  bool IsFinished() override;
+		bool IsFinished() override;
 
-  private:
-  DriveTrain* mpTankDrive;
-  int ticksPassed;
+		private:
+		DriveTrain* mpDriveTrain;
+		double mDistance;
+		int ticksPassed;
 };
