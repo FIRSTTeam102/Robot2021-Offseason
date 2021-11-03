@@ -77,8 +77,8 @@ int constexpr kOperatorJoystick = 1;
 
 
 // Calibrated values
-// Auto calibration
-float constexpr kAutoMoveTicks = 3 * 50; // 3 sec * 50 ticks/sec
+// Distance from starting line to rendevous points (ball pickup)
+int constexpr kStartToBallDist = 220;
 
 // Shooter Speeds
 float constexpr kSlowSpeed = 0.4;
