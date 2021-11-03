@@ -32,5 +32,5 @@ void BackUp::End(bool interrupted) {
 
 // Returns true when the command should end.
 bool BackUp::IsFinished() {
-	return (ticksPassed >= 200); //Drives robot backwards for 200 ticks. 200 in this case might need to be changed if the robot does not drive far enough or drives too far
+	return (ticksPassed >= 100); //Drives robot backwards for 200 ticks. 200 in this case might need to be changed if the robot does not drive far enough or drives too far
 }

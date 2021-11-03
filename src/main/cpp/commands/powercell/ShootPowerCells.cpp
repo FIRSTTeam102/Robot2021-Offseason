@@ -30,7 +30,7 @@ void ShootPowerCells::Execute() {
     printf("PEW\n");
     mpIndexerSubsys->shootPowerCells();
   }*/
-  printf("Shooting\n");
+  printf("shooting power cells\n");
   mpIndexerSubsys->shootPowerCells();
 }
 
@@ -40,11 +40,11 @@ void ShootPowerCells::Execute() {
 //   of power cells.
 void ShootPowerCells::End(bool interrupted) {
   mpIndexerSubsys->stopIndexer();
+  mpShooterSubsys->stopMotor();
 }
 
 // shoot power cells - is finished - Returns true when the command should end.
 //    if the indexer is empty, stop trying to shoot power cells.
 bool ShootPowerCells::IsFinished() { 
-  //return (mpIndexerSubsys->isEmptyIndexer()); 
-  return false;
+  return (mpIndexerSubsys->isEmptyIndexer()); 
 }
