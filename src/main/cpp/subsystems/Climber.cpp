@@ -18,7 +18,7 @@ Climber::Climber(frc::XboxController *pOperatorJoystick) :
 	mpOperatorJoystick{pOperatorJoystick}
 {
 	mClimbUpMotor.SetInverted(true);
-	mClimbDownMotor.SetInverted(true);
+	// mClimbDownMotor.SetInverted(true);
 }
 
 // Stop all climber motors
@@ -38,7 +38,8 @@ void Climber::Climb()
 		mClimbDownMotor.Set(0);
 	} else if (ClimbSpeed() < 0 && !isClimbDown()) {
 		printf("Climbing down");
-		mClimbUpMotor.Set(ClimbSpeed() * kTakeUpSlackPercent);
+		mClimbUpMotor.Set(0);
+		// mClimbUpMotor.Set(ClimbSpeed() * kTakeUpSlackPercent);
 		mClimbDownMotor.Set(ClimbSpeed());
 	} else {
 		printf("Climbing stopped");

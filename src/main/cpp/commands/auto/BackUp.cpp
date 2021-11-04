@@ -22,6 +22,7 @@ void BackUp::Initialize() {
 void BackUp::Execute() {
 	ticksPassed++;
 	mpDriveTrain->move(-0.5, -0.5);
+	printf("Backing up, gone %i\n", mpDriveTrain->getREncs());
 }
 
 // Called once the command ends or is interrupted.

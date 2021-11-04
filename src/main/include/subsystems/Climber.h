@@ -35,7 +35,7 @@ class Climber : public frc2::SubsystemBase {
 			if (-0.1 < speed && speed < 0.1){
 				speed = 0;
 			}
-			return speed;
+			return speed * 1.75;
 		}
 
 	private:
