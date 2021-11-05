@@ -57,9 +57,9 @@ void DriveTrain::arcadeDrive(){
 	if (mpDriverJoystick->GetBumper(frc::GenericHID::JoystickHand::kLeftHand)) { // LB
 		speedPercent = 1.00; // Turbo pressed
 	}
-	if (mpDriverJoystick->GetBumper(frc::GenericHID::JoystickHand::kRightHand)) { // RB
-		rotationPercent = 0.8; // Turbo pressed
-	}
+	// if (mpDriverJoystick->GetBumper(frc::GenericHID::JoystickHand::kRightHand)) { // RB
+	// 	rotationPercent = 0.8; // Turbo pressed
+	// }
 
 	double speed = speedPercent * mpDriverJoystick->GetRawAxis(1); // Cap: 690rpm
 	double rotation = rotationPercent * mpDriverJoystick->GetRawAxis(4); // Cap: 697rpm
