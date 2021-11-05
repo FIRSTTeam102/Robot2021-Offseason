@@ -64,6 +64,8 @@ void RobotContainer::ConfigureButtonBindings()
 	mDriverButtonRMenu.WhenPressed(&mFlipDriveCommand, false);
 	mDriverLT.WhenPressed(&mIndexOnceCommand, true);
 	mDriverRT.WhenHeld(&mShootCommand, false);
+	// mDriverButtonLB is mapped to speed boost
+	mDriverButtonRB.WhenHeld(&mAimLM, true);
 
 	mOperatorButtonA.WhenPressed(&mPrepShootingSlow, true);
 	mOperatorButtonB.WhenPressed(&mPrepShootingMed, true);
