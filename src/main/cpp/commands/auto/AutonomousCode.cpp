@@ -18,7 +18,7 @@ AutonomousCode::AutonomousCode(DriveTrain* pDriveTrain, Intake* pIntake, Indexer
     printf("balls balls balls balls balls\n");
     AddCommands(LMYawToTarget(mpLimelight, mpDriveTrain), LMYawToTarget(mpLimelight, mpDriveTrain));
     AddCommands(AimShooter(mpShooter, kFastSpeed), Delay(75));
-    AddCommands(ShootPowerCells(mpIndexer, mpShooter));
+    AddCommands(ShootPowerCells(mpIndexer, mpShooter, true));
   }
   //if (mShoot && mSlot == 2 && mMove == 1) { //Shot old balls, near trench, going to pick up trench balls
   if (slot == 2 && move == 1) { //Not necessarily shot old balls, near trench, going to pick up trench balls

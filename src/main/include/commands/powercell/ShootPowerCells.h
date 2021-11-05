@@ -22,7 +22,7 @@
 class ShootPowerCells
     : public frc2::CommandHelper<frc2::CommandBase, ShootPowerCells> {
  public:
-  ShootPowerCells(Indexer* pIndexerSubsys, Shooter* pShooterSubsys);
+  ShootPowerCells(Indexer* pIndexerSubsys, Shooter* pShooterSubsys, bool isAuto = false);
 
   void Initialize() override;
 
@@ -34,4 +34,5 @@ class ShootPowerCells
  private:
   Indexer* mpIndexerSubsys;
   Shooter* mpShooterSubsys;
+  bool mIsAuto;
 };

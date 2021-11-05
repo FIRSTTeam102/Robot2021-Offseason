@@ -9,9 +9,10 @@
 #include "subsystems/Shooter.h"
 #include "subsystems/Indexer.h"
 
-ShootPowerCells::ShootPowerCells(Indexer* pIndexerSubsys, Shooter* pShooterSubsys):
+ShootPowerCells::ShootPowerCells(Indexer* pIndexerSubsys, Shooter* pShooterSubsys, bool isAuto):
   mpIndexerSubsys{pIndexerSubsys},
-  mpShooterSubsys{pShooterSubsys}
+  mpShooterSubsys{pShooterSubsys},
+  mIsAuto{isAuto}
 {
   // Use addRequirements() here to declare subsystem dependencies.
   AddRequirements(pIndexerSubsys);
@@ -46,5 +47,8 @@ void ShootPowerCells::End(bool interrupted) {
 // shoot power cells - is finished - Returns true when the command should end.
 //    if the indexer is empty, stop trying to shoot power cells.
 bool ShootPowerCells::IsFinished() { 
-  return (mpIndexerSubsys->isEmptyIndexer()); 
+  if (mIsAuto) {
+    return (mpIndexerSubsys->isEmptyIndexer()); 
+  }
+  return false;
 }
