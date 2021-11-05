@@ -31,6 +31,8 @@ class DriveTrain : public frc2::SubsystemBase {
 		void resetEncs() { mLeftEnc.Reset(); mRightEnc.Reset(); }
 		int getLEncs() { return mLeftEnc.Get(); }
 		int getREncs() { return mRightEnc.Get(); }
+		int getLEncDist() { return mLeftEnc.GetDistance(); }
+		int getREncDist() { return mRightEnc.GetDistance(); }
 		/* * Will be called periodically whenever the CommandScheduler runs. */
 		void Periodic();
 

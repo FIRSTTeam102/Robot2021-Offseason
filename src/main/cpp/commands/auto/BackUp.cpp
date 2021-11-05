@@ -32,5 +32,5 @@ void BackUp::End(bool interrupted) {
 
 // Returns true when the command should end.
 bool BackUp::IsFinished() {
-	return mpDriveTrain->getREncs() >= mDistance; // inches
+	return mpDriveTrain->getREncDist() >= mDistance; // inches
 }

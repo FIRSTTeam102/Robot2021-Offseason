@@ -10,12 +10,13 @@
 // For more information, see:
 // https://docs.wpilib.org/en/latest/docs/software/commandbased/convenience-features.html
 
-AutonomousCode::AutonomousCode(DriveTrain* pDriveTrain, Intake* pIntake, Indexer* pIndexer, Shooter* pShooter, int slot, bool shoot, int move, bool shoot2): mpDriveTrain{pDriveTrain}, mpIntake{pIntake}, mpIndexer{pIndexer}, mpShooter{pShooter} {printf("Running auto\n");
+AutonomousCode::AutonomousCode(DriveTrain* pDriveTrain, Intake* pIntake, Indexer* pIndexer, Shooter* pShooter, LM* pLimelight, int slot, bool shoot, int move, bool shoot2): mpDriveTrain{pDriveTrain}, mpIntake{pIntake}, mpIndexer{pIndexer}, mpShooter{pShooter}, mpLimelight{pLimelight} {printf("Running auto\n");
   // Add your commands here, e.g.
   // AddCommands(FooCommand(), BarCommand());
   pDriveTrain->stop();
   if (shoot) { //Shoot initial cells
     printf("balls balls balls balls balls\n");
+    AddCommands(LMYawToTarget(mpLimelight, mpDriveTrain), LMYawToTarget(mpLimelight, mpDriveTrain), LMYawToTarget(mpLimelight, mpDriveTrain), LMYawToTarget(mpLimelight, mpDriveTrain));
     AddCommands(AimShooter(mpShooter, kFastSpeed), Delay(25));
     AddCommands(ShootPowerCells(mpIndexer, mpShooter));
   }

@@ -16,17 +16,19 @@
 #include "commands/powercell/AimShooter.h"
 #include "commands/powercell/ShootPowerCells.h"
 #include "commands/Delay.h"
+#include "commands/limelight/LMYawToTarget.h"
 
 #include "subsystems/DriveTrain.h"
 #include "subsystems/Intake.h"
 #include "subsystems/Indexer.h"
 #include "subsystems/Shooter.h"
+#include "subsystems/LM.h"
 
 class AutonomousCode
     : public frc2::CommandHelper<frc2::SequentialCommandGroup,
                                   AutonomousCode> {
  public:
-  AutonomousCode(DriveTrain* pDriveTrain, Intake* pIntake, Indexer* pIndexer, Shooter* pShooter, int slot, bool shoot, int move, bool shoot2);
+  AutonomousCode(DriveTrain* pDriveTrain, Intake* pIntake, Indexer* pIndexer, Shooter* pShooter, LM* pLimelight, int slot, bool shoot, int move, bool shoot2);
   //void setAutoConfig(int slot, bool shoot, int move, bool shoot2);
   //void Initialize() override;
  private:
@@ -34,6 +36,7 @@ class AutonomousCode
   Intake* mpIntake;
   Indexer* mpIndexer;
   Shooter* mpShooter;
+  LM* mpLimelight;
   int mSlot;
   bool mShoot;
   int mMove;
