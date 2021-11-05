@@ -21,8 +21,8 @@ void BackUp::Initialize() {
 // Called repeatedly when this Command is scheduled to run
 void BackUp::Execute() {
 	ticksPassed++;
-	mpDriveTrain->move(-0.5, -0.5);
-	printf("Backing up, gone %i\n", mpDriveTrain->getREncs());
+	mpDriveTrain->move(0.5, 0.5);
+	printf("Backing up, gone %i\n", mpDriveTrain->getREncDist());
 }
 
 // Called once the command ends or is interrupted.
@@ -32,5 +32,5 @@ void BackUp::End(bool interrupted) {
 
 // Returns true when the command should end.
 bool BackUp::IsFinished() {
-	return mpDriveTrain->getREncDist() >= mDistance; // inches
+	return abs(mpDriveTrain->getREncDist()) >= mDistance; // inches
 }

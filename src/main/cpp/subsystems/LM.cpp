@@ -78,7 +78,7 @@ void LM::Periodic()
 		steering_adjust = 0.0f;
 		if (tx > 0.0)
 		{
-			steering_adjust = 0.2;
+			steering_adjust = 0.25;
 			//steering_adjust = Kp*heading_error - min_command;
 		}
 		else if (tx < 0.0)

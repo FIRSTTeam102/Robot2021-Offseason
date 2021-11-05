@@ -22,6 +22,7 @@ void LMYawToTarget::Initialize()
 // Called repeatedly when this Command is scheduled to run
 void LMYawToTarget::Execute()
 {
+	printf("adjusting w/ limelight \n");
 	mpDriveTrain->move(mpLM->left_command, mpLM->right_command);
 }
 
