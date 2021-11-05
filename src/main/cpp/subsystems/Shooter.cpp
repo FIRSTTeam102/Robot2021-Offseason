@@ -6,6 +6,7 @@
 /*----------------------------------------------------------------------------*/
 
 #include <frc/shuffleboard/Shuffleboard.h>
+#include <frc/smartdashboard/SmartDashboard.h>
 #include "subsystems/Shooter.h"
 #include "Constants.h"
 
@@ -21,6 +22,8 @@ Shooter::Shooter() :
 	frc::Shuffleboard::GetTab("Drive Info")
 	.Add("Fly Wheel Speed","Stopped")
 	.WithPosition (2,1);
+
+	frc::SmartDashboard::PutNumber("Flywheel Speed", 0.0);
 }
 
 // This method will be called once per scheduler run

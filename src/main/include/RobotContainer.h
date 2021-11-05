@@ -33,6 +33,7 @@
 #include "commands/powercell/IndexSingleCell.h"
 #include "commands/powercell/LowerArm.h"
 #include "commands/powercell/PrepShooting.h"
+#include "commands/powercell/ManualShooting.h"
 #include "commands/powercell/RaiseArm.h"
 #include "commands/powercell/Reset.h"
 #include "commands/powercell/ShootPowerCells.h"
@@ -124,6 +125,7 @@ private:
 	PrepShooting mPrepShootingSlow{&mIndexer, &mShooter, kSlowSpeed};
 	PrepShooting mPrepShootingMed{&mIndexer, &mShooter, kMedSpeed};
 	PrepShooting mPrepShootingFast{&mIndexer, &mShooter, kFastSpeed};
+	ManualShooting mManualShooting{&mShooter};
 	RaiseArm mRaiseArmCommand{&mIntake, &mIndexer};
 	Reset mResetCommand{&mIntake, &mIndexer};
 	ShootPowerCells mShootCommand{&mIndexer, &mShooter};

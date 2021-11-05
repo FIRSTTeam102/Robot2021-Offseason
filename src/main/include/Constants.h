@@ -82,7 +82,7 @@ int constexpr kStartToBallDist = 220;
 
 // Shooter Speeds
 float constexpr kSlowSpeed = 0.4;
-float constexpr kMedSpeed = 0.5;
+float constexpr kMedSpeed = 0.51;
 float constexpr kFastSpeed = 0.8;
 
 // Indexer Constants
