@@ -50,6 +50,7 @@
 #include "commands/NextCamera.h"
 // #include "commands/ToggleLift.h"
 #include "commands/limelight/AimLM.h"
+#include "commands/limelight/LMYawToTarget.h"
 
 /**
  * This class is where the bulk of the robot should be declared.  Since
@@ -139,6 +140,7 @@ private:
 
 	LM mLM;
 	AimLM mAimLM{&mLM, &mShooter, &mTankDrive};
+	LMYawToTarget mLMYawToTarget{&mLM, &mTankDrive};
 
 	Climber mClimber{&mOperatorController};
 	Climb mClimbCommand{&mClimber};

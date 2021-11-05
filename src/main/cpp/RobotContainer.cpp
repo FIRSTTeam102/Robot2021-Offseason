@@ -66,7 +66,7 @@ void RobotContainer::ConfigureButtonBindings()
 	mDriverLT.WhenPressed(&mIndexOnceCommand, true);
 	mDriverRT.WhenHeld(&mShootCommand, false);
 	// mDriverButtonLB is mapped to speed boost
-	mDriverButtonRB.WhenHeld(&mAimLM, true);
+	mDriverButtonRB.WhenHeld(&mLMYawToTarget, true);
 
 	mOperatorButtonA.WhenPressed(&mPrepShootingSlow, true);
 	// mOperatorButtonA.WhenPressed(&mManualShooting, true);
@@ -78,7 +78,8 @@ void RobotContainer::ConfigureButtonBindings()
 	mOperatorRightDPad.WhenHeld(&mResetCommand, true);
 	mOperatorDownDPad.WhenPressed(&mLowerArmCommand, true);
 	mOperatorUpDPad.WhenPressed(&mRaiseArmCommand, true);
-	mOperatorLT.WhenHeld(&mAimLM, true);
+	mOperatorLT.WhenHeld(&mLMYawToTarget, true);
+	mOperatorRT.WhenHeld(&mIndexOnceCommand, true);
 	// must be added- mOperatorButtonLMenu(toggle danger buttons)
 	// mOperatorButtonLMenu.WhenPressed(&mPrevCamCommand, true);
 	mOperatorButtonRMenu.WhenPressed(&mNextCamCommand, true);

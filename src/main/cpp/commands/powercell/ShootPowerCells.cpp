@@ -41,7 +41,7 @@ void ShootPowerCells::Execute() {
 //   of power cells.
 void ShootPowerCells::End(bool interrupted) {
   mpIndexerSubsys->stopIndexer();
-  mpShooterSubsys->stopMotor();
+  // mpShooterSubsys->stopMotor();
 }
 
 // shoot power cells - is finished - Returns true when the command should end.
