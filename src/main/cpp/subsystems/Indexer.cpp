@@ -39,7 +39,7 @@ Indexer::Indexer():
     frc::Shuffleboard::GetTab("Drive Info")
     .Add("Indexer Full",isFullIndexer())
     .WithWidget(frc::BuiltInWidgets::kBooleanBox)
-    .WithPosition(3,1);
+    .WithPosition(5,4);
 
     frc::Shuffleboard::GetTab("Drive Info")
     .Add("Indexer Delay",kBottomIndexerTimeout)
@@ -47,7 +47,7 @@ Indexer::Indexer():
 
     frc::Shuffleboard::GetTab("Drive Info")
     .Add("# Power Cells",mNumPowerCells)
-    .WithPosition(3,3);
+    .WithPosition(4,4);
 }
 //isFullIndexer - returns true if the TopSensor,
 //   and IntakeSensor all see a power cell. The Indexer is

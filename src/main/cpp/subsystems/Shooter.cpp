@@ -21,7 +21,7 @@ Shooter::Shooter() :
 
 	frc::Shuffleboard::GetTab("Drive Info")
 	.Add("Fly Wheel Speed","Stopped")
-	.WithPosition (2,1);
+	.WithPosition (3,4);
 
 	frc::SmartDashboard::PutNumber("Flywheel Speed", 0.0);
 }

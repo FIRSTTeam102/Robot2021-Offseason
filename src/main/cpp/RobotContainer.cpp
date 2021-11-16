@@ -10,6 +10,14 @@
 #include <frc/shuffleboard/SendableCameraWrapper.h>
 #include "RobotContainer.h"
 
+/* trying to get std::map to work... */
+#include <map>
+#include <string>
+// apparently also need network tables...
+#include "networktables/NetworkTable.h"
+#include "networktables/NetworkTableEntry.h"
+#include "networktables/NetworkTableInstance.h"
+
 RobotContainer::RobotContainer()
 {
 	// Initialize all of your commands and subsystems here
@@ -34,18 +42,26 @@ RobotContainer::RobotContainer()
 	// Shuffleboard info/controls
 	// change size to .WithSize(4,4)
 	// 	and edit tile size to be > or = 256-ish in "File" -> "Default Tile Size"
+	//  (need to change using code though instead of manually every time...)
 	// recommended settings:
-	// compression=60, fps=30, resolution=144x81
+	// compression=20, fps=15, resolution=320x240
 	
-	// WHAT IS A STRINGMAP AAAAAAAAAAAAAAAAAAAAAA
+	// HOW CAN I DECLARE A STRINGMAP with properties ???
+	// looking at ...\wpi\StringMap.h
 	//wpi::StringMap<int> testMap = {{"min", 0}, {"max", 1}};
+	//std::map<std::string, int> m { {"CPU", 10}, {"GPU", 15}, {"RAM", 20}, };
 	frc::Shuffleboard::GetTab("Drive Info")
 			.Add("Camera Stream", mCamera1)
 			.WithWidget(frc::BuiltInWidgets::kCameraStream)
-			.WithSize(2, 1)
+			.WithSize(7, 4)
 			//.WithProperties(wpi::StringMap<std::string>({"min",0,"max",0}))
 			//.WithProperties(testMap)
 			.WithPosition(0, 0);
+	frc::Shuffleboard::GetTab("Drive Info")
+			.Add("text info here", "sample text?")
+			.WithWidget(frc::BuiltInWidgets::kTextView)
+			.WithSize(2, 1)
+			.WithPosition(2, 5);
 
 	// Camera servo controller
 	mCameraServo.SetDefaultCommand(std::move(mServoCommand));

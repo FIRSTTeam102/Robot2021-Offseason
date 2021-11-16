@@ -25,7 +25,7 @@ DriveTrain::DriveTrain():
 	frc::Shuffleboard::GetTab("Drive Info")
 	.Add("Drive Front",inverted)
 	.WithWidget(frc::BuiltInWidgets::kBooleanBox)
-	.WithPosition (1,0);
+	.WithPosition (0,4);
 
 	mLeftEnc.SetDistancePerPulse(EncoderDistancePerPulse);
 	mRightEnc.SetDistancePerPulse(EncoderDistancePerPulse);

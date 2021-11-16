@@ -64,7 +64,7 @@ void Robot::RobotInit()
 	//put game specific data on the shuffleboard - start of match = ""
 	frc::Shuffleboard::GetTab("Drive Info")
 			.Add("CP FMS Color", "No Data")
-			.WithPosition(3, 3);
+			.WithPosition(4, 5);
 }
 
 /**
