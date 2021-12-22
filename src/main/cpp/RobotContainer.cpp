@@ -72,9 +72,9 @@ void RobotContainer::ConfigureButtonBindings()
 {
 	// Configure your button bindings here
 
-	mDriverButtonB.WhenHeld(&mPositionControlPanelCommand, true);
-	mDriverButtonX.WhenHeld(&mRotateControlPanelCommand, true);
-	mDriverButtonY.WhenHeld(&mManualControlPanelCommand, false);
+	// mDriverButtonB.WhenHeld(&mPositionControlPanelCommand, true);
+	// mDriverButtonX.WhenHeld(&mRotateControlPanelCommand, true);
+	// mDriverButtonY.WhenHeld(&mManualControlPanelCommand, false);
 	// mDriverButtonLB.WhenHeld(&mSlowLeftCommand, true);
 	// mDriverButtonRB.WhenHeld(&mSlowRightCommand, true);
 	mDriverButtonLMenu.WhenPressed(&mNextCamCommand, true);
@@ -84,21 +84,21 @@ void RobotContainer::ConfigureButtonBindings()
 	// mDriverButtonLB is mapped to speed boost
 	mDriverButtonRB.WhenHeld(&mLMYawToTarget, true);
 
-	mOperatorButtonA.WhenPressed(&mPrepShootingSlow, true);
+	mDriverButtonA.WhenPressed(&mPrepShootingSlow, true);
 	// mOperatorButtonA.WhenPressed(&mManualShooting, true);
-	mOperatorButtonB.WhenPressed(&mPrepShootingMed, true);
-	mOperatorButtonX.WhenHeld(&mStopShootingCommand, false);
-	mOperatorButtonY.WhenPressed(&mPrepShootingFast, true);
-	mOperatorButtonLB.WhenHeld(&mBallJamCommand, true);
-	mOperatorButtonRB.WhenHeld(&mShootCommand, false);
-	mOperatorRightDPad.WhenHeld(&mResetCommand, true);
-	mOperatorDownDPad.WhenPressed(&mLowerArmCommand, true);
-	mOperatorUpDPad.WhenPressed(&mRaiseArmCommand, true);
-	mOperatorLT.WhenHeld(&mLMYawToTarget, true);
-	mOperatorRT.WhenHeld(&mIndexOnceCommand, true);
+	mDriverButtonB.WhenPressed(&mPrepShootingMed, true);
+	mDriverButtonX.WhenHeld(&mStopShootingCommand, false);
+	mDriverButtonY.WhenPressed(&mPrepShootingFast, true);
+	// mOperatorButtonLB.WhenHeld(&mBallJamCommand, true);
+	// mOperatorButtonRB.WhenHeld(&mShootCommand, false);
+	mDriverRightDPad.WhenHeld(&mResetCommand, true);
+	mDriverDownDPad.WhenPressed(&mLowerArmCommand, true);
+	mDriverUpDPad.WhenPressed(&mRaiseArmCommand, true);
+	// mOperatorLT.WhenHeld(&mLMYawToTarget, true);
+	// mOperatorRT.WhenHeld(&mIndexOnceCommand, true);
 	// must be added- mOperatorButtonLMenu(toggle danger buttons)
 	// mOperatorButtonLMenu.WhenPressed(&mPrevCamCommand, true);
-	mOperatorButtonRMenu.WhenPressed(&mNextCamCommand, true);
+	// mOperatorButtonRMenu.WhenPressed(&mNextCamCommand, true);
 }
 
 frc2::Command *RobotContainer::GetAutonomousCommand(int slot, bool shoot, int move, bool shoot2)
