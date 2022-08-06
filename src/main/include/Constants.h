@@ -9,6 +9,8 @@
 #include <frc/Encoder.h>
 #include <frc/SerialPort.h>
 
+// Shooter speeds in Shooter.h
+
 /**
  * The Constants header provides a convenient place for teams to hold robot-wide
  * numerical or boolean constants.  This should not be used for any other
@@ -79,11 +81,6 @@ int constexpr kOperatorJoystick = 1;
 // Calibrated values
 // Distance from starting line to rendevous points (ball pickup)
 int constexpr kStartToBallDist = 220;
-
-// Shooter Speeds
-float constexpr kSlowSpeed = 0.4;
-float constexpr kMedSpeed = 0.51;
-float constexpr kFastSpeed = 0.8;
 
 // Indexer Constants
 int constexpr kMaxPowerCellTravelTime = 100;

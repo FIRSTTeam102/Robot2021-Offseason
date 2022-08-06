@@ -80,7 +80,7 @@ void Robot::RobotPeriodic()
 	frc2::CommandScheduler::GetInstance().Run();
 
 	std::string driveMsg = "";
-	std::string gameData = frc::DriverStation::GetInstance().GetGameSpecificMessage();
+	std::string gameData = frc::DriverStation::GetGameSpecificMessage();
 	if (gameData.length() > 0)
 	{
 		switch (gameData[0])

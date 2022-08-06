@@ -9,7 +9,7 @@
 
 #include <frc2/command/SubsystemBase.h>
 #include <frc/XboxController.h>
-#include <frc/PWMVictorSPX.h>
+#include <frc/motorcontrol/PWMVictorSPX.h>
 #include <frc/DigitalInput.h>
 
 class Climber : public frc2::SubsystemBase {

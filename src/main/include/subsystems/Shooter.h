@@ -13,6 +13,21 @@
 #include <frc/Servo.h>
 #include "Constants.h"
 
+#define DEMO_MODE
+
+namespace ShooterConstants {
+	// Shooter Speeds
+#ifdef DEMO_MODE
+	float constexpr kSlowSpeed = 0.22;
+	float constexpr kMedSpeed = 0.3;
+	float constexpr kFastSpeed = 0.5;
+#else
+	float constexpr kSlowSpeed = 0.4;
+	float constexpr kMedSpeed = 0.51;
+	float constexpr kFastSpeed = 0.8;
+#endif
+}
+
 class Shooter : public frc2::SubsystemBase
 {
 public:

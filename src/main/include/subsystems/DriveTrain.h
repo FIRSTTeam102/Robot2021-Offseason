@@ -8,7 +8,7 @@
 #pragma once
 
 #include <frc2/command/SubsystemBase.h>
-#include <frc/SpeedControllerGroup.h>
+#include <frc/motorcontrol/MotorControllerGroup.h>
 #include <ctre/Phoenix.h>
 #include <frc/drive/DifferentialDrive.h>
 #include <frc/XboxController.h>
@@ -49,8 +49,8 @@ class DriveTrain : public frc2::SubsystemBase {
 		frc::Encoder mLeftEnc{8,9};
 		frc::Encoder mRightEnc{7,6};
 
-		frc::SpeedControllerGroup mLeft{mDriveLeft1, mDriveLeft2};
-		frc::SpeedControllerGroup mRight{mDriveRight1, mDriveRight2};
+		frc::MotorControllerGroup mLeft{mDriveLeft1, mDriveLeft2};
+		frc::MotorControllerGroup mRight{mDriveRight1, mDriveRight2};
 
 		frc::DifferentialDrive mDrive{mLeft, mRight};
 	

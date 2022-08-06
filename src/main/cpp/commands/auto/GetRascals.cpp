@@ -12,6 +12,7 @@
 #include "commands/powercell/LowerArm.h"
 #include "subsystems/Intake.h"
 #include "subsystems/Indexer.h"
+#include "subsystems/Shooter.h"
 // NOTE:  Consider using this command inline, rather than writing a subclass.
 // For more information, see:
 // https://docs.wpilib.org/en/latest/docs/software/commandbased/convenience-features.html
@@ -19,7 +20,7 @@ GetRascals::GetRascals(DriveTrain* pDriveTrain, Intake* pIntake, Indexer* pIndex
   // Add your commands here, e.g.
   // AddCommands(FooCommand(), BarCommand());
   printf("GET THOSE RASCALS!!!\n");
-  AddCommands(TurnDegrees(pDriveTrain, 28, kSlowSpeed), //Straighten out
+  AddCommands(TurnDegrees(pDriveTrain, 28, ShooterConstants::kSlowSpeed), //Straighten out
   LowerArm(pIntake, pIndexer), //Prepare to intake balls
   MoveLinear(pDriveTrain, 150, -1), //Capture balls into intake area
   RaiseArm(pIntake, pIndexer)); //Raise the arm

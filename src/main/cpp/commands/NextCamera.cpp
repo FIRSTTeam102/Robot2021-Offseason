@@ -23,12 +23,12 @@ void NextCamera::Initialize() {}
 void NextCamera::Execute() {
   printf("Current camera: %d    ", mCameraSource);
   if (mCameraSource == 1) {
-    frc::CameraServer::GetInstance()->GetServer().SetSource(*mCamera2);
+    frc::CameraServer::GetServer().SetSource(*mCamera2);
     mCameraSource = 2;
     printf ("Camera 2 \n");
   }
   else {
-    frc::CameraServer::GetInstance()->GetServer().SetSource(*mCamera1);
+    frc::CameraServer::GetServer().SetSource(*mCamera1);
     mCameraSource = 1;
     printf ("Camera 1 \n");
   }

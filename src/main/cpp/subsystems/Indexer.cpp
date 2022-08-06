@@ -111,13 +111,13 @@ void Indexer::shootPowerCells(){
 
 //Check if ball has been at bottom sensor for long enough
 bool Indexer::isPowerCellAtBottom(){
-    if (mIndexTimer.Get() > kBottomIndexerTimeout) {
+    if (mIndexTimer.Get().value() > kBottomIndexerTimeout) {
         mPowerCellWasAtBottom = false;
         //mBottomTimer = 0;
         mIndexTimer.Stop();
         return true;
     }
-    printf("Bottom timer: %f out of %f\n", mIndexTimer.Get(), kBottomIndexerTimeout);
+    printf("Bottom timer: %f out of %f\n", mIndexTimer.Get().value(), kBottomIndexerTimeout);
     return false;
 }
 

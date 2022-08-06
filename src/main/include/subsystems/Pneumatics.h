@@ -23,7 +23,7 @@ public:
 private:
 	// Components (e.g. motor controllers and sensors) should generally be
 	// declared private and exposed only through public methods.
-	frc::Compressor mCompressor{0};
-	frc::Solenoid mLift{0};
+	frc::Compressor mCompressor{0, frc::PneumaticsModuleType::CTREPCM};
+	frc::Solenoid mLift{frc::PneumaticsModuleType::CTREPCM, 0};
 	bool mEnabled = false;
 };

@@ -17,7 +17,7 @@ AutonomousCode::AutonomousCode(DriveTrain* pDriveTrain, Intake* pIntake, Indexer
   if (shoot) { //Shoot initial cells
     printf("balls balls balls balls balls\n");
     AddCommands(LMYawToTarget(mpLimelight, mpDriveTrain), LMYawToTarget(mpLimelight, mpDriveTrain));
-    AddCommands(AimShooter(mpShooter, kFastSpeed), Delay(75));
+    AddCommands(AimShooter(mpShooter, ShooterConstants::kFastSpeed), Delay(75));
     AddCommands(ShootPowerCells(mpIndexer, mpShooter, true));
   }
   //if (mShoot && mSlot == 2 && mMove == 1) { //Shot old balls, near trench, going to pick up trench balls
@@ -26,7 +26,7 @@ AutonomousCode::AutonomousCode(DriveTrain* pDriveTrain, Intake* pIntake, Indexer
     AddCommands(GetRascals(mpDriveTrain, mpIntake, mpIndexer));
     if (shoot2) { //Shoot again
       printf("Shooting from trench\n");
-      AddCommands(TurnDegrees(mpDriveTrain, -11.5, kSlowSpeed), AimShooter(mpShooter, kMedSpeed), ShootPowerCells(mpIndexer, mpShooter));
+      AddCommands(TurnDegrees(mpDriveTrain, -11.5, ShooterConstants::kSlowSpeed), AimShooter(mpShooter, ShooterConstants::kMedSpeed), ShootPowerCells(mpIndexer, mpShooter));
     }
   }
   else if (move == 2) { //Back up the whole time 
@@ -35,7 +35,7 @@ AutonomousCode::AutonomousCode(DriveTrain* pDriveTrain, Intake* pIntake, Indexer
   }
   else { //Wait until very end to back up
     printf("Waiting\n");
-    if (frc::DriverStation::GetInstance().GetMatchTime() < 1.5) {
+    if (frc::DriverStation::GetMatchTime() < 1.5) {
       printf("Backing up\n");
       AddCommands(BackUp(mpDriveTrain));
     }

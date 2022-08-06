@@ -19,9 +19,9 @@ PrepShooting::PrepShooting(Indexer* pIndexer, Shooter* pShooter, float shooterSp
 
   //update the shuffle board driver info: Fly Wheel Speed
   std::string shootRange = "";
-  if (shooterSpeed == kSlowSpeed) { shootRange = "Close";} 
-  else if (shooterSpeed == kMedSpeed) {shootRange = "Medium";}
-  else if (shooterSpeed == kFastSpeed) {shootRange = "Far";}
+  if (shooterSpeed == ShooterConstants::kSlowSpeed) { shootRange = "Close";} 
+  else if (shooterSpeed == ShooterConstants::kMedSpeed) {shootRange = "Medium";}
+  else if (shooterSpeed == ShooterConstants::kFastSpeed) {shootRange = "Far";}
   else shootRange = "Unknown";
 
   nt::NetworkTableInstance ntInst = nt::NetworkTableInstance::GetDefault();

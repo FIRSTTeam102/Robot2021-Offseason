@@ -25,7 +25,7 @@ public:
 	float left_command;
 	float right_command;
 
-	std::shared_ptr<NetworkTable> table = nt::NetworkTableInstance::GetDefault().GetTable("limelight");
+	std::shared_ptr<nt::NetworkTable> table = nt::NetworkTableInstance::GetDefault().GetTable("limelight");
 
 	/**
 			* Will be called periodically whenever the CommandScheduler runs.

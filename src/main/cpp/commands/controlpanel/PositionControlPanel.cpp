@@ -23,7 +23,7 @@ void PositionControlPanel::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void PositionControlPanel::Execute() {
-  gameData = frc::DriverStation::GetInstance().GetGameSpecificMessage();
+  gameData = frc::DriverStation::GetGameSpecificMessage();
   if(gameData.length() > 0)
   {
     switch (gameData[0])

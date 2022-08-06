@@ -26,27 +26,27 @@ void PreviousCamera::Initialize() {
 // Called repeatedly when this Command is scheduled to run
 void PreviousCamera::Execute() {
   /*if (mCameraSource == 1) {
-    frc::CameraServer::GetInstance()->GetServer().SetSource(*mCamera3);
+    frc::CameraServer::GetServer().SetSource(*mCamera3);
     mCameraSource = 3;
   }
   else if (mCameraSource == 2)
   {  
-    frc::CameraServer::GetInstance()->GetServer().SetSource(*mCamera1); 
+    frc::CameraServer::GetServer().SetSource(*mCamera1); 
     mCameraSource = 1;
   }
   else {
-    frc::CameraServer::GetInstance()->GetServer().SetSource(*mCamera2);
+    frc::CameraServer::GetServer().SetSource(*mCamera2);
     
     mCameraSource = 2;
   }*/
   if (mCameraSource == 1) {
-    frc::CameraServer::GetInstance()->GetServer().SetSource(*mCamera2);
+    frc::CameraServer::GetServer().SetSource(*mCamera2);
     //frc::Shuffleboard::GetTab("Auto")
     //.Add("Current Camera", mCamera2);
     mCameraSource = 2;
   }
   else {
-    frc::CameraServer::GetInstance()->GetServer().SetSource(*mCamera1);
+    frc::CameraServer::GetServer().SetSource(*mCamera1);
      mCameraSource = 1;
   }
 }

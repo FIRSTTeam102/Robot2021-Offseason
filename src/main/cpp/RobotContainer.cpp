@@ -4,11 +4,13 @@
 /* must be accompanied by the FIRST BSD license file in the root directory of */
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
+
+#include "RobotContainer.h"
+
 #include <frc/shuffleboard/Shuffleboard.h>
 
 #include <frc/shuffleboard/Shuffleboard.h>
 #include <frc/shuffleboard/SendableCameraWrapper.h>
-#include "RobotContainer.h"
 
 /* trying to get std::map to work... */
 #include <map>
@@ -18,8 +20,8 @@
 #include "networktables/NetworkTableEntry.h"
 #include "networktables/NetworkTableInstance.h"
 
-RobotContainer::RobotContainer()
-{
+RobotContainer::RobotContainer() {
+	frc::DriverStation::SilenceJoystickConnectionWarning(true);
 	// Initialize all of your commands and subsystems here
 
 	// Configure the button bindings
@@ -29,15 +31,15 @@ RobotContainer::RobotContainer()
 	mTankDrive.SetDefaultCommand(std::move(mDriveCommand));
 	mTankDrive.setDriverJoystick(&mDriverController);
 
-	mClimber.SetDefaultCommand(std::move(mClimbCommand));
+	// mClimber.SetDefaultCommand(std::move(mClimbCommand));
 
 	// mIndexer.SetDefaultCommand(std::move(mIndexCommand));
 
 	// Cameras 0 & 1 init
-	mCamera1 = frc::CameraServer::GetInstance()->StartAutomaticCapture(0);
-	mCamera2 = frc::CameraServer::GetInstance()->StartAutomaticCapture(1);
+	// mCamera1 = frc::CameraServer::GetInstance()->StartAutomaticCapture(0);
+	// mCamera2 = frc::CameraServer::GetInstance()->StartAutomaticCapture(1);
 	// Get video stream from camera 1
-	frc::CameraServer::GetInstance()->GetServer().SetSource(mCamera1);
+	// frc::CameraServer::GetInstance()->GetServer().SetSource(mCamera1);
 
 	// Shuffleboard info/controls
 	// change size to .WithSize(4,4)
@@ -50,26 +52,25 @@ RobotContainer::RobotContainer()
 	// looking at ...\wpi\StringMap.h
 	//wpi::StringMap<int> testMap = {{"min", 0}, {"max", 1}};
 	//std::map<std::string, int> m { {"CPU", 10}, {"GPU", 15}, {"RAM", 20}, };
-	frc::Shuffleboard::GetTab("Drive Info")
-			.Add("Camera Stream", mCamera1)
-			.WithWidget(frc::BuiltInWidgets::kCameraStream)
-			.WithSize(7, 4)
-			//.WithProperties(wpi::StringMap<std::string>({"min",0,"max",0}))
-			//.WithProperties(testMap)
-			.WithPosition(0, 0);
-	frc::Shuffleboard::GetTab("Drive Info")
-			.Add("text info here", "sample text?")
-			.WithWidget(frc::BuiltInWidgets::kTextView)
-			.WithSize(2, 1)
-			.WithPosition(2, 5);
+	// frc::Shuffleboard::GetTab("Drive Info")
+	// 		.Add("Camera Stream", mCamera1)
+	// 		.WithWidget(frc::BuiltInWidgets::kCameraStream)
+	// 		.WithSize(7, 4)
+	// 		//.WithProperties(wpi::StringMap<std::string>({"min",0,"max",0}))
+	// 		//.WithProperties(testMap)
+	// 		.WithPosition(0, 0);
+	// frc::Shuffleboard::GetTab("Drive Info")
+	// 		.Add("text info here", "sample text?")
+	// 		.WithWidget(frc::BuiltInWidgets::kTextView)
+	// 		.WithSize(2, 1)
+	// 		.WithPosition(2, 5);
 
 	// Camera servo controller
-	mCameraServo.SetDefaultCommand(std::move(mServoCommand));
-	mCameraServo.setServoJoystick(&mOperatorController);
+	// mCameraServo.SetDefaultCommand(std::move(mServoCommand));
+	// mCameraServo.setServoJoystick(&mOperatorController);
 }
 
-void RobotContainer::ConfigureButtonBindings()
-{
+void RobotContainer::ConfigureButtonBindings() {
 	// Configure your button bindings here
 
 	// mDriverButtonB.WhenHeld(&mPositionControlPanelCommand, true);
@@ -77,12 +78,12 @@ void RobotContainer::ConfigureButtonBindings()
 	// mDriverButtonY.WhenHeld(&mManualControlPanelCommand, false);
 	// mDriverButtonLB.WhenHeld(&mSlowLeftCommand, true);
 	// mDriverButtonRB.WhenHeld(&mSlowRightCommand, true);
-	mDriverButtonLMenu.WhenPressed(&mNextCamCommand, true);
+	// mDriverButtonLMenu.WhenPressed(&mNextCamCommand, true);
 	mDriverButtonRMenu.WhenPressed(&mFlipDriveCommand, false);
 	mDriverLT.WhenPressed(&mIndexOnceCommand, true);
 	mDriverRT.WhenHeld(&mShootCommand, false);
 	// mDriverButtonLB is mapped to speed boost
-	mDriverButtonRB.WhenHeld(&mLMYawToTarget, true);
+	// mDriverButtonRB.WhenHeld(&mLMYawToTarget, true);
 
 	mDriverButtonA.WhenPressed(&mPrepShootingSlow, true);
 	// mOperatorButtonA.WhenPressed(&mManualShooting, true);
@@ -101,11 +102,11 @@ void RobotContainer::ConfigureButtonBindings()
 	// mOperatorButtonRMenu.WhenPressed(&mNextCamCommand, true);
 }
 
-frc2::Command *RobotContainer::GetAutonomousCommand(int slot, bool shoot, int move, bool shoot2)
-{
+frc2::Command *RobotContainer::GetAutonomousCommand(int slot, bool shoot, int move, bool shoot2) {
 	// An example command will be run in autonomous
 	// return &m_autonomousCommand;
 	// mAutoCommand.setAutoConfig(slot, shoot, move, shoot2);
 	// return &mAutoCommand;
-	return new AutonomousCode(&mTankDrive, &mIntake, &mIndexer, &mShooter, &mLM, slot, shoot, move, shoot2);
+	// return new AutonomousCode(&mTankDrive, &mIntake, &mIndexer, &mShooter, &mLM, slot, shoot, move, shoot2);
+	return nullptr;
 }

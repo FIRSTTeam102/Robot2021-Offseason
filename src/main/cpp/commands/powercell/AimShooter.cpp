@@ -17,7 +17,7 @@ AimShooter::AimShooter(Shooter *pShooter, float speed) : mpShooter{pShooter}, mS
 void AimShooter::Initialize()
 {
 	rampUpSpeed = 0;
-	if (mSpeed != kFastSpeed)
+	if (mSpeed != ShooterConstants::kFastSpeed)
 	{
 		mpShooter->extServo();
 	}
