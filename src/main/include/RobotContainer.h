@@ -29,6 +29,7 @@
 #include "commands/drive/SlowTurn.h"
 #include "commands/drive/FlipDrive.h"
 #include "commands/powercell/BallJam.h"
+#include "commands/powercell/DisengageShooter.h"
 #include "commands/powercell/IndexPowerCell.h"
 #include "commands/powercell/IndexSingleCell.h"
 #include "commands/powercell/LowerArm.h"
@@ -131,7 +132,8 @@ private:
 	RaiseArm mRaiseArmCommand{&mIntake, &mIndexer};
 	Reset mResetCommand{&mIntake, &mIndexer};
 	ShootPowerCells mShootCommand{&mIndexer, &mShooter};
-	StopShootingPowerCells mStopShootingCommand{&mIndexer, &mShooter};
+	// StopShootingPowerCells mStopShootingCommand{&mIndexer, &mShooter};
+	DisengageShooter mStopShootingCommand{&mShooter};
 
 	// ControlPanelManipulator mControlPanel;
 	// RotateControlPanel mRotateControlPanelCommand{&mControlPanel, &mTankDrive};

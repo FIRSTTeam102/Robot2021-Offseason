@@ -34,5 +34,6 @@ void BallJam::End(bool interrupted) {
 
 // Returns true when the command should end.
 bool BallJam::IsFinished() {
-  return (mpIndexer->isPowerCellAtBottom() || mpIndexer->isEmptyIndexer());
+  // return (mpIndexer->isPowerCellAtBottom() || mpIndexer->isEmptyIndexer());
+  return false; // just use this command as unindex
 }
