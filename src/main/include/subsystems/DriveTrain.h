@@ -13,6 +13,7 @@
 #include <frc/drive/DifferentialDrive.h>
 #include <frc/XboxController.h>
 #include <frc/Encoder.h>
+#include <networktables/NetworkTableEntry.h>
 
 
 
@@ -39,6 +40,9 @@ class DriveTrain : public frc2::SubsystemBase {
 		double EncoderDistancePerPulse = 6 /* wheel diameter (in) */ * 3.14159 / 360 /* encoder CPR */ * 0.61538461538 /* 24:39 magic number - it went 39in when it was supposed to go 24in */;
 
 	private:
+
+		nt::NetworkTableEntry mShuffleboardSpeedScale;
+
 		frc::XboxController* mpDriverJoystick;
 
 		WPI_TalonSRX mDriveLeft1;

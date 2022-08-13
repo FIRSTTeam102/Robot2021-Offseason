@@ -29,6 +29,18 @@ DriveTrain::DriveTrain():
 
 	mLeftEnc.SetDistancePerPulse(EncoderDistancePerPulse);
 	mRightEnc.SetDistancePerPulse(EncoderDistancePerPulse);
+
+	wpi::StringMap<std::shared_ptr<nt::Value>> demoScaleSliderProps = {
+		std::make_pair("Min", nt::Value::MakeDouble(0.10)),
+		std::make_pair("Max", nt::Value::MakeDouble(1.00)),
+		std::make_pair("Block increment", nt::Value::MakeDouble(0.05))
+	};
+
+	mShuffleboardSpeedScale = frc::Shuffleboard::GetTab("Demo")
+		.Add("Demo Speed Scale", 0.85)
+		.WithWidget(frc::BuiltInWidgets::kNumberSlider)
+		.WithProperties(demoScaleSliderProps)
+		.GetEntry();
 }
 
 // This method will be called once per scheduler run
@@ -51,7 +63,7 @@ void DriveTrain::tankDrive(){
 }
 
 void DriveTrain::arcadeDrive(){
-	double speedPercent = 0.85;
+	double speedPercent = mShuffleboardSpeedScale.GetDouble(0.85);
 	double rotationPercent = 0.74;
 	if (mpDriverJoystick->GetLeftBumper()) { // LB
 		speedPercent = 1.00; // Turbo pressed
