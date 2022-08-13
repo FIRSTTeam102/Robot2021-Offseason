@@ -11,6 +11,7 @@
 #include <frc/Encoder.h>
 #include <ctre/Phoenix.h>
 #include <frc/Servo.h>
+#include <networktables/NetworkTableEntry.h>
 #include "Constants.h"
 
 #define DEMO_MODE
@@ -28,38 +29,43 @@ namespace ShooterConstants {
 #endif
 }
 
-class Shooter : public frc2::SubsystemBase
-{
-public:
-	Shooter();
-	void setSpeed(float speed);
-	void startMotor();
-	void stopMotor();
-	bool isRunning();
-	void extServo()
-	{
-		mServo.Set(kOutHood);
-		mHoodIn = 0;
-	}
-	void retrServo()
-	{
-		mServo.Set(kInHood);
-		mHoodIn = 1;
-	}
-	void toggleServo();
+class Shooter : public frc2::SubsystemBase {
+	public:
+		Shooter();
+		void setSpeed(float speed);
+		void startMotor();
+		void stopMotor();
+		bool isRunning();
+		void extServo() {
+			mServo.Set(kOutHood);
+			mHoodIn = 0;
+		}
+		void retrServo() {
+			mServo.Set(kInHood);
+			mHoodIn = 1;
+		}
+		void toggleServo();
 
-	/**
-	 * Will be called periodically whenever the CommandScheduler runs.
-	 */
-	void Periodic();
+		double getSpeed() {
+			return mSpeed;
+		}
+		double getShuffleboardSpeed() {
+			return mShuffleboardSpeed.GetDouble(0.0);
+		}
 
-private:
-	WPI_TalonSRX mShooter1;
-	WPI_TalonSRX mShooter2;
-	frc::Servo mServo;
-	float mSpeed;
-	bool mHoodIn;
-	bool mIsStarted;
-	// Components (e.g. motor controllers and sensors) should generally be
-	// declared private and exposed only through public methods.
+		/**
+		 * Will be called periodically whenever the CommandScheduler runs.
+		 */
+		void Periodic();
+
+	private:
+		nt::NetworkTableEntry mShuffleboardSpeed;
+		WPI_TalonSRX mShooter1;
+		WPI_TalonSRX mShooter2;
+		frc::Servo mServo;
+		float mSpeed;
+		bool mHoodIn;
+		bool mIsStarted;
+		// Components (e.g. motor controllers and sensors) should generally be
+		// declared private and exposed only through public methods.
 };

@@ -31,7 +31,7 @@ void ShootPowerCells::Execute() {
     printf("PEW\n");
     mpIndexerSubsys->shootPowerCells();
   }*/
-  printf("shooting power cells\n");
+  // printf("shooting power cells\n");
   mpIndexerSubsys->shootPowerCells();
 }
 

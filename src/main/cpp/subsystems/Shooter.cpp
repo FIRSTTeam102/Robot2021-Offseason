@@ -23,6 +23,18 @@ Shooter::Shooter() :
 	.Add("Fly Wheel Speed","Stopped")
 	.WithPosition (3,4);
 
+	wpi::StringMap<std::shared_ptr<nt::Value>> demoScaleSliderProps = {
+		std::make_pair("Min", nt::Value::MakeDouble(0.0)),
+		std::make_pair("Max", nt::Value::MakeDouble(1.00)),
+		std::make_pair("Block increment", nt::Value::MakeDouble(0.05))
+	};
+
+	mShuffleboardSpeed = frc::Shuffleboard::GetTab("Demo")
+		.Add("Shooter speed", 0.8)
+		.WithWidget(frc::BuiltInWidgets::kNumberSlider)
+		.WithProperties(demoScaleSliderProps)
+		.GetEntry();
+
 	frc::SmartDashboard::PutNumber("Flywheel Speed", 0.0);
 }
 

@@ -19,20 +19,22 @@
  * directly; this is crucially important, or else the decorator functions in
  * Command will *not* work!
  */
-class AimShooter
-    : public frc2::CommandHelper<frc2::CommandBase, AimShooter> {
- public:
-  AimShooter(Shooter* pShooter, float speed);
+class AimShooter : public frc2::CommandHelper<frc2::CommandBase, AimShooter> {
+	public:
+		AimShooter(Shooter *pShooter, float speed);
+		AimShooter(Shooter *pShooter);
 
-  void Initialize() override;
+		void Initialize() override;
 
-  void Execute() override;
+		void Execute() override;
 
-  void End(bool interrupted) override;
+		void End(bool interrupted) override;
 
-  bool IsFinished() override;
-  private:
-  Shooter* mpShooter;
-  float mSpeed;
-  float rampUpSpeed;
+		bool IsFinished() override;
+
+	private:
+		Shooter *mpShooter;
+		float mSpeed;
+		float rampUpSpeed;
+		bool useShuffleboard = false;
 };

@@ -117,7 +117,7 @@ bool Indexer::isPowerCellAtBottom(){
         mIndexTimer.Stop();
         return true;
     }
-    printf("Bottom timer: %f out of %f\n", mIndexTimer.Get().value(), kBottomIndexerTimeout);
+    // printf("Bottom timer: %f out of %f\n", mIndexTimer.Get().value(), kBottomIndexerTimeout);
     return false;
 }
 

@@ -126,6 +126,7 @@ private:
 	PrepShooting mPrepShootingSlow{&mIndexer, &mShooter, ShooterConstants::kSlowSpeed};
 	PrepShooting mPrepShootingMed{&mIndexer, &mShooter, ShooterConstants::kMedSpeed};
 	PrepShooting mPrepShootingFast{&mIndexer, &mShooter, ShooterConstants::kFastSpeed};
+	AimShooter mShuffleboardShooter{&mShooter};
 	ManualShooting mManualShooting{&mShooter};
 	RaiseArm mRaiseArmCommand{&mIntake, &mIndexer};
 	Reset mResetCommand{&mIntake, &mIndexer};
