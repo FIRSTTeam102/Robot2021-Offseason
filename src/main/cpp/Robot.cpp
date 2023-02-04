@@ -16,6 +16,8 @@
 #include <networktables/NetworkTableEntry.h>
 #include <frc2/command/CommandScheduler.h>
 
+#include <frc/RobotController.h>
+
 frc::SendableChooser<int> mAutoPos;
 frc::SendableChooser<bool> mAutoShoot;
 frc::SendableChooser<int> mAutoMovement;
@@ -116,7 +118,15 @@ void Robot::RobotPeriodic()
  */
 void Robot::DisabledInit() {}
 
-void Robot::DisabledPeriodic() {}
+void Robot::DisabledPeriodic() {
+	if (frc::RobotController::GetBatteryVoltage().value() < 10.5) {
+		for (int i = 0; i < 10; i++) {
+			printf("REPLACE BATTERY | REPLACE BATTERY\n");
+
+			throw std::runtime_error{"INTENTIONAL CRASH -- REPLACE BATTERY NOW"};
+		}
+	}
+}
 
 /**
  * This autonomous runs the autonomous command selected by your {@link
